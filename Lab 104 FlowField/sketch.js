@@ -30,8 +30,8 @@ function draw() {
 function loadIndicator(c, r){
   for (let i = 0; i < c; i++){
     for (let j = 0; j < r; j++){
-      let x = (i * gridWidth);
-      let y = (j * gridHeight);
+      let x = (i * (gridWidth / 2)) + (gridWidth / 4);
+      let y = (j * (gridHeight / 2)) + (gridHeight / 4);
       lineIndicator.push(new Indicator(x, y));
     }
   }

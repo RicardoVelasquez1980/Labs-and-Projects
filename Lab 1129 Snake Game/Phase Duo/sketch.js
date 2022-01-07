@@ -21,10 +21,6 @@ let gameMusic,
 let apple, snakeSplash, snakeHead, snakeBody, snakeTail, instructionImage;
 
 
-
-
-let pauseToggle = false;
-
 function preload() {
   loseSound = loadSound("lose.wav");
   eatSound = loadSound("eat.wav");

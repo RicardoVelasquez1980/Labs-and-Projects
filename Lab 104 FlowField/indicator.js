@@ -5,7 +5,7 @@
 class Indicator extends p5.Vector{
   constructor(x, y){
     super(x, y);
-    this.loc2 = createVector(x + 20, y + 20);
+    this.loc2 = createVector(x + 10, y + 10);
     this.angle = random(TWO_PI);
   }
 
@@ -16,9 +16,9 @@ class Indicator extends p5.Vector{
   render(){
     push();
     translate(this.x, this.y);
-    // rotate(this.angle);
+    rotate(this.angle);
     noFill();
-    stroke(0, 0, 255);
+    stroke(255, 0, 0);
     strokeWeight(1);
     line(this.x, this.y, this.loc2.x, this.loc2.y);
     pop();
