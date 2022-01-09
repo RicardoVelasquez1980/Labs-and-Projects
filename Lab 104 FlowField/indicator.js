@@ -4,24 +4,39 @@
 //Start Class Indicator##########
 class Indicator extends p5.Vector{
   constructor(x, y){
-    super(x, y);
-    this.loc2 = createVector(x + 10, y + 10);
-    this.angle = random(TWO_PI);
+    super(x, y);//Location#####
+    this.loc2 = createVector(gridWidth / 2, 0);//Second Location#####
+    this.xOff = random(1000);
+    this.angle = noise(this.xOff) * TWO_PI;//Random Angle Is Given#####
   }
 
   run(){
     this.render();
+    this.angleUpdate();
   }
 
   render(){
     push();
-    translate(this.x, this.y);
-    rotate(this.angle);
+    translate(this.x, this.y);//Origin Of Canvas Set To The Location For Only THIS Object#####
+    rotate(this.angle);//Rotates Canvas According To The Angle#####
     noFill();
-    stroke(255, 0, 0);
+    stroke(255, 255, 0);
     strokeWeight(1);
-    line(this.x, this.y, this.loc2.x, this.loc2.y);
+    line(0, 0, this.loc2.x, this.loc2.y);//Line Made From Both Locations#####
     pop();
+
+    push();
+    translate(this.x, this.y);
+    noFill();
+    stroke(0, 255, 0);
+    strokeWeight(4);
+    point(0, 0);//Simple Dot For Aesthetical Purposes#####
+    pop();
+  }
+
+  angleUpdate(){
+    this.xOff += 0.02
+    this.angle = noise(this.xOff) * TWO_PI;
   }
 }
 //End Class Indicator##########
