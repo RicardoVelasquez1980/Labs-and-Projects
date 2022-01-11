@@ -7,7 +7,9 @@ class Indicator extends p5.Vector{
     super(x, y);//Location#####
     this.loc2 = createVector(gridWidth / 2, 0);//Second Location#####
     this.xOff = random(1000);
-    this.angle = noise(this.xOff) * TWO_PI;//Random Angle Is Given#####
+    this.yOff = random(1000);
+    this.zOff = random(1000);
+    this.angle = noise(this.xOff, this.yOff, this.zOff) * TWO_PI;//Random Angle Is Given#####
   }
 
   run(){
@@ -35,8 +37,10 @@ class Indicator extends p5.Vector{
   }
 
   angleUpdate(){
-    this.xOff += 0.02
-    this.angle = noise(this.xOff) * TWO_PI;
+    this.xOff += 0.002;
+    this.yOff += 0.002;
+    this.zOff += 0.002;
+    this.angle = noise(this.xOff, this.yOff) * TWO_PI;
   }
 }
 //End Class Indicator##########

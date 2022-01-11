@@ -25,7 +25,7 @@ class Ball extends p5.Vector{
   }
 
   move(){
-    this.vel.limit(2);//Speed Limit Of 4#####
+    this.vel.limit(1);//Speed Limit Of 4#####
     this.vel.add(this.acc);//Velocity Updated#####
     this.add(this.vel);//Makes Ball Moves#####
 

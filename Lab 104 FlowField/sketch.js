@@ -19,7 +19,7 @@ function setup() {
   loadBalls(floor(random(4, 40)));//Balls Are Generated#####
 
 
-  // frameRate(1);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
+  // frameRate(15);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
 }
 
 function draw() {
