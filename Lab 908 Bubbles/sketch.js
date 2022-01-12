@@ -12,7 +12,7 @@ function setup() {
   loadBalls(100);
 
   //Optional FrameRate##########
-  frameRate(30);
+  // frameRate(30);
 }
 
 function draw() {
@@ -72,7 +72,7 @@ class Ball{
 
   //START TEST CHANGE OF VEL##########
   update(){
-    
+
     if (this.counter++ > 10){
       let dx = random(-5, 5);
       let dy = random(-5, 5);
