@@ -41,7 +41,7 @@ class Indicator extends p5.Vector{
     this.xOff += 0.02;
     this.yOff += 0.01;
     this.zOff += 0.04;
-    this.angle = noise(this.xOff, this.yOff) * this.ranPI;
+    this.angle = noise(this.xOff, this.yOff, this.zOff) * this.ranPI;
   }
 }
 //End Class Indicator##########
