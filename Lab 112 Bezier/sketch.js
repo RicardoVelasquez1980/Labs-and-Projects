@@ -18,16 +18,21 @@ function draw() {
 //Start Function loadBalls##########
 function loadBalls(qty){
   for (let i = 0; i < qty; i++){
-    ellipse(random(width), random(height), 8);
+    let x = random(width);
+    let y = random(height);
+
+    balls.push(ellipse(x, y, 10));
+
+    randomThing.push(RandomThing(x, y));
   }
 }
 //End Function loadBalls##########
 
 //Start Class randomThing##########
 class RandomThing extends p5.Vector{
-  constructor(){
-    super();
-    this.loc2 = createVector();
+  constructor(x, y){
+    super(x, y);
+    this.loc2 = createVector(x + random(10, 200), );
     this.vel1 = p5.Vector.random2D();
     this.vel2 = p5.Vector.random2D();
     this.ctrl1 = createVector();
