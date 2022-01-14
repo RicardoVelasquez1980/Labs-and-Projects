@@ -6,11 +6,9 @@ class Indicator extends p5.Vector{
   constructor(x, y){
     super(x, y);//Location#####
     this.loc2 = createVector(gridWidth / 2, 0);//Second Location#####
-    this.xOff = random(1000);
-    this.yOff = random(1000);
-    this.zOff = random(1000);
-    this.ranPI = random(TWO_PI);
-    this.angle = noise(this.xOff, this.yOff, this.zOff) * this.ranPI;//Random Angle Is Given#####
+    this.xOff = 0;
+    this.yOff = 0;
+    this.angle = noise(this.xOff, this.yOff) * TWO_PI;//Random Angle Is Given#####
   }
 
   run(){
@@ -38,10 +36,12 @@ class Indicator extends p5.Vector{
   }
 
   angleUpdate(){
-    this.xOff += 0.02;
-    this.yOff += 0.01;
-    this.zOff += 0.04;
-    this.angle = noise(this.xOff, this.yOff, this.zOff) * this.ranPI;
+    for (let i = 0; i < height; i++){
+      for (let j = 0; j < width; j++){
+        let index = x + y * width;
+        let r = noise(xOff, yOff);
+      }
+    }
   }
 }
 //End Class Indicator##########

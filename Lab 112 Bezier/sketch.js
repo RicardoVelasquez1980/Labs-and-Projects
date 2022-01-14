@@ -32,10 +32,11 @@ function loadBalls(qty){
 class RandomThing extends p5.Vector{
   constructor(x, y){
     super(x, y);
-    this.loc2 = createVector(x + random(10, 200), );
+    let
+    this.loc2 = createVector(x + random(10, 200), y + random(10, 200));
     this.vel1 = p5.Vector.random2D();
     this.vel2 = p5.Vector.random2D();
-    this.ctrl1 = createVector();
+    this.ctrl1 = createVector(x - random(20), y - random(20));
     this.ctrl2 = createVector();
   }
 }
