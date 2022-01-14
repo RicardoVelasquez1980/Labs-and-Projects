@@ -29,10 +29,12 @@ class Ball extends p5.Vector{
     this.vel.add(this.acc);//Velocity Updated#####
     this.add(this.vel);//Makes Ball Moves#####
 
-    for (let i = 0; i < lineIndicator.length; i++){
-      this.distanceFromCell = dist(this.x, this.y, lineIndicator[i].x, lineIndicator[i].y)
-      if (this.distanceFromCell < 20 * sqrt(2)){//Multiplied By The SQRT Of 2 BC Of 45,45,90 Triangle Rule#####
-        this.acc = p5.Vector.fromAngle(lineIndicator[i].angle);//Acceleration Updated To A Vector Made From The Closes Line Indicator Angle#####
+    for (let i = 0; i < cols; i++){
+      for (let j = 0; j < rows; j++){
+        this.distanceFromCell = dist(this.x, this.y, lineIndicator[i][j].x, lineIndicator[i][j].y)
+        if (this.distanceFromCell < 20 * sqrt(2)){//Multiplied By The SQRT Of 2 BC Of 45,45,90 Triangle Rule#####
+          this.acc = p5.Vector.fromAngle(lineIndicator[i][j].angle);//Acceleration Updated To A Vector Made From The Closes Line Indicator Angle#####
+        }
       }
     }
 

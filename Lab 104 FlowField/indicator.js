@@ -6,14 +6,11 @@ class Indicator extends p5.Vector{
   constructor(x, y){
     super(x, y);//Location#####
     this.loc2 = createVector(gridWidth / 2, 0);//Second Location#####
-    this.xOff = 0;
-    this.yOff = 0;
-    this.angle = noise(this.xOff, this.yOff) * TWO_PI;//Random Angle Is Given#####
+    this.angle = noise(0, 0) * TWO_PI;//Random Angle Is Given#####
   }
 
   run(){
     this.render();
-    this.angleUpdate();
   }
 
   render(){
@@ -33,15 +30,6 @@ class Indicator extends p5.Vector{
     strokeWeight(4);
     point(0, 0);//Simple Dot For Aesthetical Purposes#####
     pop();
-  }
-
-  angleUpdate(){
-    for (let i = 0; i < height; i++){
-      for (let j = 0; j < width; j++){
-        let index = x + y * width;
-        let r = noise(xOff, yOff);
-      }
-    }
   }
 }
 //End Class Indicator##########

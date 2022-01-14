@@ -6,6 +6,7 @@
 let lineIndicator = [], balls = [];
 let gridWidth = 40, gridHeight = 40;
 let cols, rows;
+let xOff = 0, yOff = 0, zOff = 0;
 
 function setup() {
   var cnv = createCanvas(1400, 680);
@@ -18,7 +19,6 @@ function setup() {
 
   loadBalls(floor(random(4, 40)));//Balls Are Generated#####
 
-
   // frameRate(15);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
 }
 
@@ -27,26 +27,46 @@ function draw() {
 
   loadGrid(cols, rows);//Cell Grid Is Generated And Shown#####
 
-  for (let i = 0; i < lineIndicator.length; i++){//Line Indicators Are Shown#####
-    lineIndicator[i].run();
+  for (let i = 0; i < cols; i++){//Line Indicators Are Shown#####
+    for (let j = 0; j < rows; j++){
+      lineIndicator[i][j].run();
+    }
   }
 
   for ( let i = 0; i < balls.length; i++){//Balls Are Shown#####
     balls[i].run();
   }
+
+  indicatorAngleUpdate();
 }
 
 //Start Function loadIndicator##########
 function loadIndicator(c, r){//Takes In cols(c) And rows(r)#####
   for (let i = 0; i < c; i++){//Goes Through Each Column#####
+    lineIndicator[i] = [];
     for (let j = 0; j < r; j++){//Go Through Each Row Of The Column#####
       let x = (i * gridWidth) + (gridWidth / 2);
       let y = (j * gridHeight) + (gridHeight / 2);
-      lineIndicator.push(new Indicator(x, y));
+      lineIndicator[i][j] = new Indicator(x, y);
     }
   }
 }
 //End Function loadIndicator##########
+
+//Start Function indicatorAngleUpdate##########
+function indicatorAngleUpdate(){
+  yOff = 0;
+  for (let i = 0; i < cols; i++){
+    xOff = 0;
+    for (let j = 0; j < rows; j++){
+      lineIndicator[i][j].angle = noise(xOff, yOff, zOff) * TWO_PI;
+      xOff += 0.1;
+    }
+    yOff += 0.1;
+    zOff += 0.0001
+  }
+}
+//End Function indicatorAngleUpdate##########
 
 //Start Function loadBalls##########
 function loadBalls(qty){//Takes In A Quantity#####
