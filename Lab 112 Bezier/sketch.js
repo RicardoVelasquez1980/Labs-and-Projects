@@ -5,6 +5,8 @@ let balls = [], randomThing = [];
 
 let cnv
 
+let sliderStroke;
+
 let pause = false;
 
 function setup() {
@@ -12,8 +14,11 @@ function setup() {
   cnv.position((windowWidth - width) / 2, 30);
   background(0);
 
+  sliderStroke = createSlider(1, 10, 1, 0.1);
+  sliderStroke.position(10, 40);
+
   loadThings(ceil(random(40)));
-  frameRate(120);
+  // frameRate(120);
 }
 
 function draw() {
@@ -33,7 +38,7 @@ function keyPressed(){
     pause = false;
   }
   if (keyCode === 83){
-    save(cnv, 'test.jpg');
+    save('test.jpg');
   }
 }
 

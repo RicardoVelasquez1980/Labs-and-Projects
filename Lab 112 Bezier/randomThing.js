@@ -19,7 +19,7 @@ class RandomThing extends p5.Vector{
     push();
     noFill();
     stroke(this.clr);
-    strokeWeight(5);
+    strokeWeight(sliderStroke.value());
     bezier(this.ctrl1.x, this.ctrl1.y, this.x, this.y, this.loc2.x, this.loc2.y, this.ctrl2.x, this.ctrl2.y);
     pop();
   }
