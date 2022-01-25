@@ -7,42 +7,52 @@ let lineIndicator = [], balls = [];
 let gridWidth = 40, gridHeight = 40;
 let cols, rows;
 let xOff = 0, yOff = 0, zOff = 0;
+let cosmicDroplet;
 
 let pause = true;
 
+function preload(){
+  cosmicDroplet = loadImage('CosmicDroplet.jpg');
+
+}
+
 function setup() {
-  var cnv = createCanvas(1413, 680);
+  var cnv = createCanvas(cosmicDroplet.width * 2, cosmicDroplet.height);
   cnv.position((windowWidth - width) / 2, 30);
 
+  cosmicDroplet.resize(1997, 0);
   // background(0);
+  // image(cosmicDroplet);
 
   cols = width / gridWidth;
   rows = height / gridHeight;
 
-  loadIndicator(cols, rows);//Line Indicators Are Generated#####
+  // loadIndicator(cols, rows);//Line Indicators Are Generated#####
 
-  loadBalls(floor(random(4, 40)));//Balls Are Generated#####
+  // loadBalls(floor(random(4, 40)));//Balls Are Generated#####
 
-  frameRate(15);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
+  // frameRate(1);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
 }
 
 function draw() {
     if (pause){
-    background(0);
+    // background(0);
+    image(cosmicDroplet);
 
-    loadGrid(cols, rows);//Cell Grid Is Generated And Shown#####
 
-    for (let i = 0; i < cols; i++){//Line Indicators Are Shown#####
-      for (let j = 0; j < rows; j++){
-        lineIndicator[i][j].run();
-      }
-    }
+    // loadGrid(cols, rows);//Cell Grid Is Generated And Shown#####
 
-    for ( let i = 0; i < balls.length; i++){//Balls Are Shown#####
-      balls[i].run();
-    }
+    // for (let i = 0; i < cols; i++){//Line Indicators Are Shown#####
+    //   for (let j = 0; j < rows; j++){
+    //     lineIndicator[i][j].run();
+    //   }
+    // }
 
-    indicatorAngleUpdate();
+    // for ( let i = 0; i < balls.length; i++){//Balls Are Shown#####
+    //   balls[i].run();
+    // }
+
+    // indicatorAngleUpdate();
   }
 }
 
