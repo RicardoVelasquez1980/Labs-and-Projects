@@ -8,6 +8,7 @@ class Ball extends p5.Vector{
     this.vel = createVector(0, 0);//No Velocity From The Start#####
     this.acc = createVector(0, 0);//No Acceleration From The Start#####
     this.distanceFromCell = 0;//Var Used To Stor The Distance Of A Ball From ALL The Cells#####
+    this.clr = 0;
   }
 
   run(){
@@ -17,8 +18,12 @@ class Ball extends p5.Vector{
   }
 
   render(){
+    if (this.x > width / 2){
+      this.clr = orangeSmoke.get(this.x - width / 2, this.y);
+    }
+
     push();
-    fill(84, 43, 29, 50);
+    fill(this.clr);
     noStroke();
     ellipse(this.x, this.y, 8);//Ellipse With A Radius Of 8#####
     pop();
