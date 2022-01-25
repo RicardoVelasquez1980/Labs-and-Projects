@@ -30,7 +30,7 @@ class Ball extends p5.Vector{
   }
 
   move(){
-    this.vel.limit(4);//Speed Limit Of 4#####
+    this.vel.limit(8);//Speed Limit Of 4#####
     this.vel.add(this.acc);//Velocity Updated#####
     this.add(this.vel);//Makes Ball Moves#####
 
@@ -48,7 +48,7 @@ class Ball extends p5.Vector{
   checkEdges(){//Checks When Half The Ball Has Reached Any Edge And Then Teleports It To The OtherSide#####
     if (this.x + 4 > width){
       this.x = 4.1;
-    } else if (this.x - 4 < 0){
+    } else if (this.x - 4 < width / 2){
     this.x = width - 4.1;
     }
 

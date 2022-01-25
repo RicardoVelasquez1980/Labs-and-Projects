@@ -23,7 +23,7 @@ function setup() {
   background(0);
   // image(orangeSmoke, 0, 0);
 
-  cols = width / gridWidth;
+  cols = (width / 2) / gridWidth;
   rows = height / gridHeight;
 
   loadIndicator(cols, rows);//Line Indicators Are Generated#####
@@ -69,7 +69,7 @@ function loadIndicator(c, r){//Takes In cols(c) And rows(r)#####
   for (let i = 0; i < c; i++){//Goes Through Each Column#####
     lineIndicator[i] = [];
     for (let j = 0; j < r; j++){//Go Through Each Row Of The Column#####
-      let x = (i * gridWidth) + (gridWidth / 2);
+      let x = (i * gridWidth) + (gridWidth / 2) + (width / 2);
       let y = (j * gridHeight) + (gridHeight / 2);
       lineIndicator[i][j] = new Indicator(x, y);
     }
@@ -87,7 +87,7 @@ function indicatorAngleUpdate(){
       xOff += 0.1;
     }
     yOff += 0.1;
-    zOff += 0.03;//Orig 0.0001#####
+    zOff += 0.0003;//Orig 0.0001#####
   }
 }
 //End Function indicatorAngleUpdate##########
@@ -106,7 +106,7 @@ function loadGrid(c, r){//Takes In cols(c) and rows(r)#####
       noFill();
       stroke(255, 255, 255, 75);
       strokeWeight(1);
-      translate(i * gridWidth, j * gridHeight);
+      translate(i * gridWidth + (width / 2), j * gridHeight);
       rect(0, 0, gridWidth, gridHeight);
       pop();
     }
