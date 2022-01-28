@@ -7,7 +7,6 @@ let shade;
 function setup() {
   cnv = createCanvas(windowWidth - 20, windowHeight - 60);
   cnv.position((windowWidth - width) / 2, 30);
-  background(255 - shade);
   // x = random(width);
   // y = random(height);
   x = mouseX;
@@ -20,6 +19,7 @@ function setup() {
   scaleChReset = createButton("RESET");
   scaleChReset.position(width - 40, 40);
   shade = random(255);
+  background(255 - shade);
 
 }
 
