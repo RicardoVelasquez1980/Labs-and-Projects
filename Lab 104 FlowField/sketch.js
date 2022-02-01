@@ -79,7 +79,7 @@ function indicatorAngleUpdate(){
       xOff += 0.1;
     }
     yOff += 0.1;
-    zOff += 0.03;//Orig 0.0001#####
+    zOff += 0.003;//Orig 0.0001#####
   }
 }
 //End Function indicatorAngleUpdate##########
