@@ -11,6 +11,8 @@ let orangeSmoke;
 
 let pause = true;
 
+let brushSize, brushSpeed, flowSpeed, flowChange;
+
 function preload(){
   orangeSmoke = loadImage('OrangeSmoke.png');
 
@@ -29,6 +31,28 @@ function setup() {
   loadIndicator(cols, rows);//Line Indicators Are Generated#####
 
   loadBalls(floor(random(4, 200)));//Balls Are Generated#####
+
+  brushSize = createSlider(1, 8, 4, 0.1);//Brush Size Slider#####
+  brushSpeed = createSlider(1, 16, 8, 0.1);//Brush Speed Slider#####
+  flowSpeed = createSlider(0, 0.01, 0.0003, 0.00001);//FlowField Speed Slider#####
+  flowChange = createSlider(0, 1, 0, 0.01);//FlowField Change Slider#####
+  brushSize.position(width * 1.15, 30);
+  brushSpeed.position(width * 1.15, 80);
+  flowSpeed.position(width * 1.15, 130);
+  flowChange.position(width * 1.15, 180);
+
+  //Text#####
+  let brushSizeText = createP('Brush Size');
+  brushSizeText.position(width * 1.15, 0);
+
+  let brushSpeedText = createP('Brush Speed');
+  brushSpeedText.position(width * 1.15, 50);
+
+  let flowSpeedText = createP('FlowField Speed');
+  flowSpeedText.position(width * 1.15, 100);
+
+  let flowChangeText = createP('FlowField Change');
+  flowChangeText.position(width * 1.15, 150);
 
   // frameRate(1);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
 }
@@ -79,15 +103,15 @@ function loadIndicator(c, r){//Takes In cols(c) And rows(r)#####
 
 //Start Function indicatorAngleUpdate##########
 function indicatorAngleUpdate(){
-  yOff = 0;
+  yOff = flowChange.value();
   for (let i = 0; i < cols; i++){
-    xOff = 0;
+    xOff = flowChange.value();
     for (let j = 0; j < rows; j++){
       lineIndicator[i][j].angle = noise(xOff, yOff, zOff) * TWO_PI;//Updateing Noise#####
       xOff += 0.1;
     }
     yOff += 0.1;
-    zOff += 0.0003;//Orig 0.0001#####
+    zOff += flowSpeed.value();//Orig 0.0001#####
   }
 }
 //End Function indicatorAngleUpdate##########

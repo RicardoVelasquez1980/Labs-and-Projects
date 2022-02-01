@@ -25,12 +25,12 @@ class Ball extends p5.Vector{
     push();
     fill(this.clr);
     noStroke();
-    ellipse(this.x, this.y, 4);//Ellipse With A Radius Of 8#####
+    ellipse(this.x, this.y, brushSize.value());//Ellipse With A Radius Of 8#####
     pop();
   }
 
   move(){
-    this.vel.limit(8);//Speed Limit Of 4#####
+    this.vel.limit(brushSpeed.value());//Speed Limit Of 4#####
     this.vel.add(this.acc);//Velocity Updated#####
     this.add(this.vel);//Makes Ball Moves#####
 
