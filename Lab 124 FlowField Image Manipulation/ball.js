@@ -25,7 +25,7 @@ class Ball extends p5.Vector{
     push();
     fill(this.clr);
     noStroke();
-    ellipse(this.x, this.y, 8);//Ellipse With A Radius Of 8#####
+    ellipse(this.x, this.y, 4);//Ellipse With A Radius Of 8#####
     pop();
   }
 

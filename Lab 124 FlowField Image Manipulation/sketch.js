@@ -12,7 +12,7 @@ let orangeSmoke;
 let pause = true;
 
 function preload(){
-  orangeSmoke = loadImage('OrangeSmoke.jpg');
+  orangeSmoke = loadImage('OrangeSmoke.png');
 
 }
 
