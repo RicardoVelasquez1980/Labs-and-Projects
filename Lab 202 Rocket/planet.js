@@ -14,8 +14,7 @@ class Planet extends p5.Vector{
 
   run(){
     this.render();
-    // this.flee();
-    this.tp();
+    this.flee();
 
   }
 
@@ -29,7 +28,40 @@ class Planet extends p5.Vector{
   }
 
   flee(){
+    // let distance = dist(this.x, this.y, rocket.x, rocket.y);
     let distance = dist(this.x, this.y, rocket.x, rocket.y);
+
+    if (distance <= 100){
+
+
+      //EXPLANATION TO HOW SUB WORKS%%%%%%%%%%%%%%%%
+
+      // this.acc = p5.Vector.sub(this, test);//THIS - TEST = New Vector For Acc
+      //If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Positive; Goes To Right
+      //Same Applies For The Y-Value; Goes Down
+      //Else If THIS X-Value Is < TEST X-Value Then New Vectors X-Value Is Negative; Goes To Left
+      //Same Applies For The Y-Value; Goes Up
+
+      // this.acc = p5.Vector.sub(test, this);//TEST - THIS = New Vector For Acc
+      //If THIS X-Value Is < TEST X-Value Then New Vectors X-Value Is Positive; Goes To Right
+      //Same Applies For The Y-Value; Goes Down
+      //Else If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Negative; Goes To Left
+      //Same Applies For The Y-Value; Goes Up
+
+
+      this.acc = p5.Vector.sub(this, rocket);
+      this.acc.normalize();
+      this.acc.mult(0.1);
+      this.vel.limit(4);
+      this.vel.add(this.acc);
+      this.add(this.vel);
+    } else if (distance <= 50){
+      this.tp();
+    } else{
+      this.acc = createVector(0, 0);
+      this.vel = createVector(0, 0);
+    }
+
   }
 
   tp(){}
