@@ -3,7 +3,6 @@
 
 let rocket, planet;
 
-let test;
 
 function setup() {
   cnv = createCanvas(windowWidth - 20, windowHeight - 60);

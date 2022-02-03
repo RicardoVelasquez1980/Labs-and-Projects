@@ -26,6 +26,8 @@ function setup() {
 function draw() {
   // background(255 - shade);
 
+  let dia = 10;
+
   scaleChReset.mousePressed(resetScal);
 
   x = mouseX;
@@ -41,7 +43,16 @@ function draw() {
   fill(shade, shade, shade, random(255));
   stroke(255 - shade / 2, 255 - shade / 2, 255 - shade / 2, random(255));
   strokeWeight(4);
-  rect(0, 0, 10);
+  rect(0, 0, dia);
+  pop();
+
+  push();
+  translate(x, y);
+  noStroke();
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  text(dia, 0, 0);
   pop();
 
 }
