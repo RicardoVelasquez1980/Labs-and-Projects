@@ -9,14 +9,44 @@ class Planet extends p5.Vector{
     this.acc = createVector(0, 0);
     this.clr = color(0, random(255), 0, random(175, 255));
     this.dia = ceil(random(32, 64));
+<<<<<<< Updated upstream
     this.origDia = this.dia;//Used For The Animation#####
+=======
+    this.origDia = this.dia;
+    // this.distance = dist(this.x, this.y, rocket.x, rocket.y);
+    this.distance = dist(this.x, this.y, test.x, test.y);
+>>>>>>> Stashed changes
 
   }
 
   run(){
+    // this.distance = dist(this.x, this.y, rocket.x, rocket.y);
+    this.distance = dist(this.x, this.y, test.x, test.y);
+
     this.render();
-    this.flee();
     this.checkEdges();
+
+    if (this.distance <= 100 && this.distance > 50){
+      this.flee();
+
+    } else if (this.distance <= 50){
+      this.tp('DECREASE');
+
+    } else {
+      this.vel = createVector(0, 0);
+
+      this.tp('INCREASE');
+
+    }
+
+    push();
+    translate(mouseX, mouseY);
+    noStroke();
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text(this.distance, 0, 0);
+    pop();
 
   }
 
@@ -30,11 +60,28 @@ class Planet extends p5.Vector{
   }
 
   flee(){
+<<<<<<< Updated upstream
     let distance = dist(this.x, this.y, rocket.x, rocket.y);//Calc Dist Of Planet And Rocket#####
 
     if (distance <= 100 ){
 
       //EXPLANATION OF HOW SUB WORKS%%%%%%%%%%%%%%%%
+=======
+    // let distance = dist(this.x, this.y, rocket.x, rocket.y);
+    // let distance = dist(this.x, this.y, test.x, test.y);
+
+    // this.acc = p5.Vector.sub(this, rocket);
+    this.acc = p5.Vector.sub(this, test);
+    this.acc.normalize();
+    this.acc.mult(0.1);
+
+    this.vel.limit(8);
+    this.vel.add(this.acc);
+
+    this.add(this.vel);
+
+      //EXPLANATION TO HOW SUB WORKS%%%%%%%%%%%%%%%%
+>>>>>>> Stashed changes
 
       // this.acc = p5.Vector.sub(this, test);//THIS - TEST = New Vector For Acc
       //If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Positive; Goes To Right
@@ -48,6 +95,7 @@ class Planet extends p5.Vector{
       //Else If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Negative; Goes To Left
       //Same Applies For The Y-Value; Goes Up
 
+<<<<<<< Updated upstream
       this.acc = p5.Vector.sub(this, rocket);
       this.acc.normalize();
       this.acc.mult(0.1);
@@ -83,6 +131,19 @@ class Planet extends p5.Vector{
       if (this.dia < this.origDia){
         this.dia += 4;
 
+=======
+  }
+
+  tp(typ){
+    if (typ === 'DECREASE'){
+      if (this.dia > 0){
+        this.dia--
+
+      }
+    } else if (typ === 'INCREASE'){
+      if (this.dia < this.origDia){
+        this.dia++;
+>>>>>>> Stashed changes
       }
     }
 
@@ -91,6 +152,7 @@ class Planet extends p5.Vector{
       this.y = random(height);
 
     }
+
   }
 
   checkEdges(){
