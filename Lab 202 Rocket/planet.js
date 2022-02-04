@@ -4,12 +4,12 @@
 //Start Class Planet##########
 class Planet extends p5.Vector{
   constructor(){
-    super(random(width), random(height));
+    super(random(width), random(height));//Location#####
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
     this.clr = color(0, random(255), 0, random(175, 255));
-    this.dia = ceil(random(16, 32));
-    this.origDia = this.dia;
+    this.dia = ceil(random(32, 64));
+    this.origDia = this.dia;//Used For The Animation#####
 
   }
 
@@ -30,22 +30,11 @@ class Planet extends p5.Vector{
   }
 
   flee(){
-    // let distance = dist(this.x, this.y, rocket.x, rocket.y);
-    let distance = dist(this.x, this.y, test.x, test.y);
+    let distance = dist(this.x, this.y, rocket.x, rocket.y);//Calc Dist Of Planet And Rocket#####
 
-    push();
-    translate(mouseX, mouseY);
-    noStroke();
-    fill(0);
-    textAlign(CENTER, CENTER);
-    textSize(20);
-    text(distance, 0, 0);
-    pop();
+    if (distance <= 100 ){
 
-    if (distance <= 100 && distance > 50){
-
-
-      //EXPLANATION TO HOW SUB WORKS%%%%%%%%%%%%%%%%
+      //EXPLANATION OF HOW SUB WORKS%%%%%%%%%%%%%%%%
 
       // this.acc = p5.Vector.sub(this, test);//THIS - TEST = New Vector For Acc
       //If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Positive; Goes To Right
@@ -59,41 +48,45 @@ class Planet extends p5.Vector{
       //Else If THIS X-Value Is > TEST X-Value Then New Vectors X-Value Is Negative; Goes To Left
       //Same Applies For The Y-Value; Goes Up
 
-
-      this.acc = p5.Vector.sub(this, test);
+      this.acc = p5.Vector.sub(this, rocket);
       this.acc.normalize();
       this.acc.mult(0.1);
+
       this.vel.limit(2);
       this.vel.add(this.acc);
+
       this.add(this.vel);
 
-    } else if (distance <= 50){
+    } else { //Reset Vel And Acc#####
+      this.acc = createVector(0, 0);
+      this.vel = createVector(0, 0);
+
+    }
+
+    if (distance <= 50){
       this.tp('DECREASE');
 
     } else {
       this.tp('INCREASE');
-      this.acc = createVector(0, 0);
-      this.vel = createVector(0, 0);
 
     }
 
   }
 
   tp(typ){
-    if (typ === "DECREASE"){
+    if (typ === "DECREASE"){//Decrease Dia#####
       if (this.dia > 0){
-        this.dia--;
-        console.log("dec");
+        this.dia -= 4;
 
       }
-    } else if (typ === "INCREASE"){
+    } else if (typ === "INCREASE"){//Increase Dia#####
       if (this.dia < this.origDia){
-        this.dia++;
+        this.dia += 4;
 
       }
     }
 
-    if (this.dia <= 0){
+    if (this.dia <= 0){//If Dia Is Less Than Or Equal To 0 TP#####
       this.x = random(width);
       this.y = random(height);
 
@@ -101,18 +94,18 @@ class Planet extends p5.Vector{
   }
 
   checkEdges(){
-    if (this.x - this.dia / 2 <= 0){
+    if (this.x - this.dia / 2 <= 0){//Left Edge#####
       this.x = width - (this.dia / 2) - 1;
 
-    } else if (this.x + this.dia / 2 >= width){
+    } else if (this.x + this.dia / 2 >= width){//Right Edge#####
       this.x = (this.dia / 2) + 1;
 
     }
 
-    if (this.y - this.dia / 2 <= 0){
+    if (this.y - this.dia / 2 <= 0){//Top Edge#####
       this.y = height - (this.dia / 2) - 1;
 
-    } else if (this.y + this.dia / 2 >= height){
+    } else if (this.y + this.dia / 2 >= height){//Bottom Edge#####
       this.y = (this.dia / 2) + 1;
 
     }
