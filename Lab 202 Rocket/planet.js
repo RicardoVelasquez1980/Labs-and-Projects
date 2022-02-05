@@ -41,14 +41,14 @@ class Planet extends p5.Vector{
     if (distanceSun >= 150){
       this.acc = p5.Vector.sub(sun, this);
       this.acc.normalize();
-      this.acc.mult(0.1);
+      this.acc.mult(0.09);
 
     }
 
     if (distanceSun < 150){
       this.acc = p5.Vector.sub(this, sun);
       this.acc.normalize();
-      this.acc.mult(0.15);
+      this.acc.mult(0.13);
 
     }
 

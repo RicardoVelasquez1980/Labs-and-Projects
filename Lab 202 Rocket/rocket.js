@@ -60,7 +60,7 @@ class Rocket extends p5.Vector{
     if (distance <= 200){
       this.acc = p5.Vector.sub(this, sun);
       this.acc.normalize();
-      this.acc.mult(0.058);
+      this.acc.mult(0.06);
 
       // this.vel.add(this.acc);
 
