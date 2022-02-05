@@ -7,7 +7,7 @@ class Planet extends p5.Vector{
     super(random(width), random(height));//Location#####
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
-    this.clr = color(0, random(255), 0, random(175, 255));
+    this.clr = color(0, random(100, 255), 0, random(200, 255));
     this.dia = ceil(random(32, 64));
     this.origDia = this.dia;//Used For The Animation#####
 
@@ -30,9 +30,29 @@ class Planet extends p5.Vector{
   }
 
   flee(){
-    let distance = dist(this.x, this.y, rocket.x, rocket.y);//Calc Dist Of Planet And Rocket#####
+    let distanceRocket = dist(this.x, this.y, rocket.x, rocket.y);//Calc Dist Of Planet And Rocket#####
+    let distanceSun = this.dist(sun);//Calc Dist Of Planet And Sun#####
 
-    if (distance <= 100 ){
+    this.vel.limit(4);
+    this.vel.add(this.acc);
+
+    this.add(this.vel);
+
+    if (distanceSun >= 150){
+      this.acc = p5.Vector.sub(sun, this);
+      this.acc.normalize();
+      this.acc.mult(0.1);
+
+    }
+
+    if (distanceSun < 150){
+      this.acc = p5.Vector.sub(this, sun);
+      this.acc.normalize();
+      this.acc.mult(0.15);
+
+    }
+
+    if (distanceRocket <= 100 ){
 
       //EXPLANATION OF HOW SUB WORKS%%%%%%%%%%%%%%%%
 
@@ -53,17 +73,10 @@ class Planet extends p5.Vector{
       this.acc.mult(0.1);
 
       this.vel.limit(2);
-      this.vel.add(this.acc);
-
-      this.add(this.vel);
-
-    } else { //Reset Vel And Acc#####
-      this.acc = createVector(0, 0);
-      this.vel = createVector(0, 0);
 
     }
 
-    if (distance <= 50){
+    if (distanceRocket <= 50){
       this.tp('DECREASE');
 
     } else {
