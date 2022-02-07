@@ -20,7 +20,7 @@ class Swiggle extends p5.Vector{
 
   render(){
     push();
-    fill(50, 200, 50);
+    noFill();
     strokeWeight(this.sz);
     stroke(this.clr);
     bezier(this.x, this.y, this.leftCtrlPoint.x, this.leftCtrlPoint.y, this.rightCtrlPoint.x, this.rightCtrlPoint.y, this.endPoint.x, this.endPoint.y)
