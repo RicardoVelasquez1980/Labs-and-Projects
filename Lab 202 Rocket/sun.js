@@ -6,6 +6,7 @@ class Sun extends p5.Vector{
   constructor(){
     super(width / 2, height / 2);
     this.detailQty = ceil(random(15, 30));
+    
   }
 
   run(){
