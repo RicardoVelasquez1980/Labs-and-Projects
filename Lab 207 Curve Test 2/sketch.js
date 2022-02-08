@@ -1,9 +1,13 @@
 //Ricardo Velasquez
-//
+//Lab 207 Curve Test 2
+
+let sun, planets = [], moons = [];
 
 function setup() {
   cnv = createCanvas(windowWidth - 20, windowHeight - 60);
   cnv.position((windowWidth - width) / 2, 30);
+
+  
 
 }
 
