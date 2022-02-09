@@ -4,8 +4,9 @@
 //Start Class Moon##########
 class Moon extends p5.Vector{
   constructor(planetIndex){
-    // super(random(-(planets[planetIndex].dia * 4), (planets[planetIndex].dia * 4)), random(-(planets[planetIndex].dia * 4), (planets[planetIndex].dia * 4)));//Location Based Off Planet Dia#####
-    super(0, 0);
+    // super(random(-(planets[planetIndex].dia * 2), (planets[planetIndex].dia * 2)), random(-(planets[planetIndex].dia * 2), (planets[planetIndex].dia * 2)));//Location Based Off Planet Dia#####
+    // super(0, 0);
+    super(planets[planetIndex].dia * 1.25, planets[planetIndex].dia * 1.25);
     this.angleRotation = random(TWO_PI);
     this.angleRotSpeed = 10;
     this.dia = random(10, 30);
@@ -18,13 +19,14 @@ class Moon extends p5.Vector{
   run(){
     // this.distance = dist(this.x, this.y, planets[this.planetIndex].x, planets[this.planetIndex].y);
     // this.distance = dist(this.x, this.y, 0, 0);
-    this.distance = dist(mouseX, mouseY, planets[this.planetIndex].x, planets[this.planetIndex].y, planets[this.planetIndex].x, planets[this.planetIndex].y);
+    // this.distance = dist(mouseX, mouseY, planets[this.planetIndex].x, planets[this.planetIndex].y, planets[this.planetIndex].x, planets[this.planetIndex].y);
+    // this.distance = dist(mouseX, mouseY, 0, 0);
 
-    if (this.distance <= planets[this.planetIndex].dia + planets[this.planetIndex].rad || this.distance >= planets[this.planetIndex].dia * 4){
-      this.x = random(-(planets[this.planetIndex].dia * 4), (planets[this.planetIndex].dia * 4));
-      this.y = random(-(planets[this.planetIndex].dia * 4), (planets[this.planetIndex].dia * 4));
-
-    } /*else {*/
+    // if (this.distance <= planets[this.planetIndex].dia + planets[this.planetIndex].rad || this.distance >= planets[this.planetIndex].dia * 4){
+    //   this.x = random(-(planets[this.planetIndex].dia * 4), (planets[this.planetIndex].dia * 4));
+    //   this.y = random(-(planets[this.planetIndex].dia * 4), (planets[this.planetIndex].dia * 4));
+    //
+    // } else {
       this.render();
       // this.renderDetail();
       // this.rotateMoon();
