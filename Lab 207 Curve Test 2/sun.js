@@ -11,8 +11,8 @@ class Sun extends p5.Vector{
   }
 
   run(){
-    this.render();
     this.renderDetail();
+    this.render();
 
   }
 
@@ -34,7 +34,7 @@ class Sun extends p5.Vector{
   }
 
   renderDetail(){
-    let xOffPos = random(20);//Shimmering#####
+    let xOffPos = random(20, 25);//Shimmering#####
     let yOffPos = random(14, 17);
     let angleDist = TWO_PI / this.detailQty;//Evenly Rotates Each Ray#####
 
