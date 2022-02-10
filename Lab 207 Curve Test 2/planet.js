@@ -38,7 +38,7 @@ class Planet extends p5.Vector{
   render(){
     push();
     translate(sun.x, sun.y);
-    // rotate(this.angleRotation);
+    rotate(this.angleRotation);
     noStroke();
     fill(this.clr);
     ellipse(this.x, this.y, this.dia);

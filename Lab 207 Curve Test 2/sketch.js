@@ -10,6 +10,7 @@ function setup() {
 
   sun = new Sun();
   loadPlanets(1);
+
   loadMoons(1);
 
   // frameRate(7.5);
