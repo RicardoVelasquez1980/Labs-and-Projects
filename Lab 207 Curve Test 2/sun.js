@@ -4,7 +4,7 @@
 //Start Class Sun##########
 class Sun extends p5.Vector{
   constructor(){
-    super(width / 2, height / 2);
+    super(width / 2, height / 2);//Location#####
     this.dia = random(60, 80);
     this.detailQty = ceil(random(15, 30));//Number Of Sun Rays#####
 
@@ -26,7 +26,7 @@ class Sun extends p5.Vector{
 
     //Orange Overlay#####
     push();
-    fill(242, 185, 12, random(175, 255));
+    fill(242, 185, 12, random(175, 255));//Opacity Changes#####
     noStroke();
     ellipse(this.x, this.y, this.dia);
     pop();
@@ -53,7 +53,7 @@ class Sun extends p5.Vector{
       translate(this.x, this.y);
       rotate(angleDist * i);
       noStroke();
-      fill(242, 185, 12, random(175, 255));
+      fill(242, 185, 12, random(175, 255));//Opacity Changes#####
       quad(30, 0, 30, -yOffPos, 30 + xOffPos, 0, 30, yOffPos);
       pop();
 
