@@ -9,9 +9,9 @@ function setup() {
   cnv.position((windowWidth - width) / 2, 30);
 
   sun = new Sun();
-  loadPlanets(1);
+  loadPlanets(100);
 
-  loadMoons(1);
+  loadMoons(100);
 
   // frameRate(7.5);
 
@@ -31,16 +31,6 @@ function draw() {
     moons[i].run();
 
   }
-
-
-  //TEMP: Area In Which Planets Spawn
-  push();
-  noFill();
-  stroke(255, 0, 0);
-  ellipse(width / 2, height / 2, 90 + planets[0].dia);
-  stroke(0, 255, 0);
-  ellipse(width / 2, height / 2, 1200);
-  pop();
 
 }
 
