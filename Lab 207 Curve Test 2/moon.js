@@ -13,7 +13,7 @@ class Moon extends p5.Vector{
     this.planetIndex = planetIndex;//Planet Index#####
     this.detailSz = random(3, 9);
     this.detailClr = color(random(255));
-    this.detailPos = createVector(random(-(this.dia / 2 - this.detailSz), this.dia / 2 - this.detailSz), random(-(this.dia / 2 - this.detailSz), this.dia / 2 - this.detailSz));//Location Of Crator
+    this.detailPos = createVector(random(-(this.dia / 2 - this.detailSz), this.dia / 2 - this.detailSz), random(-(this.dia / 2 - this.detailSz), this.dia / 2 - this.detailSz));//Location Of Crator#####
 
   }
 
@@ -34,10 +34,10 @@ class Moon extends p5.Vector{
   }
 
   rotateMoon(){
-    this.angleRotation += this.angleRotSpeed;
+    this.angleRotation += this.angleRotSpeed;//Change Of Angle#####
 
-    this.x = planets[this.planetIndex].x + cos(this.angleRotation) * this.orbitRad;
-    this.y = planets[this.planetIndex].y + sin(this.angleRotation) * this.orbitRad;
+    this.x = planets[this.planetIndex].x + cos(this.angleRotation) * this.orbitRad;//Change Of X Position#####
+    this.y = planets[this.planetIndex].y + sin(this.angleRotation) * this.orbitRad;//Change Of Y Position#####
 
   }
 

@@ -35,7 +35,7 @@ class Planet extends p5.Vector{
     this.angleRotation += this.angleSpeed;//Angle Changes With Change Of Angle#####
 
     this.x = sun.x + cos(this.angleRotation) * this.orbitRad;//Change Of X Position#####
-    this.y = sun.y + sin(this.angleRotation) * this.orbitRad;//Change Of Y Posistion#####
+    this.y = sun.y + sin(this.angleRotation) * this.orbitRad;//Change Of Y Position#####
 
   }
 

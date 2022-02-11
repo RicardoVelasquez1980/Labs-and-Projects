@@ -8,11 +8,11 @@ function setup() {
   cnv.position((windowWidth - width) / 2, 30);
 
   sun = new Sun();
-  loadPlanets(4);
+  loadPlanets(2);
 
-  loadMoons(8);
+  loadMoons(2);
 
-  // loadCurves(1);
+  loadCurves(1);
 
   // frameRate(7.5);
 
@@ -30,6 +30,11 @@ function draw() {
 
   for (let i = 0; i < moons.length; i++){//Run Moons#####
     moons[i].run();
+
+  }
+
+  for (let i = 0; i < curvatures.length; i++){//Run Curvatures#####
+    curvatures[i].render();
 
   }
 
@@ -54,3 +59,22 @@ function loadMoons(qty){//Make Moons#####
 
 }
 //End Function loadMoons##########
+
+//Start Function loadCurves##########
+function loadCurves(qty){
+  for (let i = 0; i < qty; i++){
+    let usedPlanet1 = floor(random(planets.length));
+    let usedPlanet2 = floor(random(planets.length));
+    let usedMoon1 = floor(random(moons.length));
+    let usedMoon2 = floor(random(moons.length));
+
+    if (usedPlanet2 === usedPlanet1) usedPlanet2 = floor(random(planets.length));
+
+    if (usedMoon2 === usedMoon1) usedMoon2 = floor(random(planets.length));
+
+    if (usedPlanet1 !== usedPlanet2 && usedMoon1 !== usedMoon2) curvatures[i] = new Curvature(usedPlanet1, usedPlanet2, usedMoon1, usedMoon2);
+
+  }
+
+}
+//End Function loadCurves##########
