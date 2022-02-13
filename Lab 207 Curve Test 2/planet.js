@@ -15,8 +15,8 @@ class Planet extends p5.Vector{
   }
 
   run(){
-    this.render();
-    this.renderDetail();
+    // this.render();
+    // this.renderDetail();
     this.rotatePlanet();
 
 

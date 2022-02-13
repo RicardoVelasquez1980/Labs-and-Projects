@@ -11,8 +11,8 @@ class Sun extends p5.Vector{
   }
 
   run(){
-    this.renderDetail();
-    this.render();
+    // this.renderDetail();
+    // this.render();
 
   }
 
