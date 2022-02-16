@@ -20,7 +20,7 @@ class Curvature extends p5.Vector{
   run(){
     this.updatePoints();
     this.render();
-    
+
   }
 
   render(){
@@ -46,4 +46,4 @@ class Curvature extends p5.Vector{
   }
 
 }
-//End Class Curvature
+//End Class Curvature###########

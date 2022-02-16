@@ -16,6 +16,7 @@ function setup() {
 
   loadCurves(ceil(random(10)));
 
+
   // frameRate(7.5);
 
 }
