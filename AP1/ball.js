@@ -8,6 +8,7 @@ class Ball extends p5.Vector{
     this.vel = createVector(0, 0);//No Velocity From The Start#####
     this.acc = createVector(0, 0);//No Acceleration From The Start#####
     this.distanceFromCell = 0;//Var Used To Stor The Distance Of A Ball From ALL The Cells#####
+    this.clr = color(0, 0, 255);
   }
 
   run(){
@@ -18,14 +19,14 @@ class Ball extends p5.Vector{
 
   render(){
     push();
-    fill(255, 0, 0);
+    fill(this.clr);
     noStroke();
-    ellipse(this.x, this.y, 8);//Ellipse With A Radius Of 8#####
+    ellipse(this.x, this.y, brushSize.value());//Ellipse With A Radius Of 8#####
     pop();
   }
 
   move(){
-    this.vel.limit(4);//Speed Limit Of 4#####
+    this.vel.limit(brushSpeed.value());//Speed Limit Of 4#####
     this.vel.add(this.acc);//Velocity Updated#####
     this.add(this.vel);//Makes Ball Moves#####
 
@@ -43,7 +44,7 @@ class Ball extends p5.Vector{
   checkEdges(){//Checks When Half The Ball Has Reached Any Edge And Then Teleports It To The OtherSide#####
     if (this.x + 4 > width){
       this.x = 4.1;
-    } else if (this.x - 4 < 0){
+    } else if (this.x - 4 < width / 2){
     this.x = width - 4.1;
     }
 

@@ -1,7 +1,5 @@
 //Ricardo Velasquez
-//Lab 104 FlowField
-
-//Little Bro Chose The Colors, DONT CHANGE##########
+//AP1
 
 let lineIndicator = [], balls = [];
 let gridWidth = 40, gridHeight = 40;
@@ -23,20 +21,20 @@ function setup() {
 
   loadBalls(floor(random(4, 40)));//Balls Are Generated#####
 
-  frameRate(15);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
+  // frameRate(15);//USED FOR TESTING ONLY, COMMENT OUT WHEN NOT TESTING%%%%%%%%%%%%
 }
 
 function draw() {
     if (pause){
     background(0);
 
-    loadGrid(cols, rows);//Cell Grid Is Generated And Shown#####
+    // loadGrid(cols, rows);//Cell Grid Is Generated And Shown#####
 
-    for (let i = 0; i < cols; i++){//Line Indicators Are Shown#####
-      for (let j = 0; j < rows; j++){
-        lineIndicator[i][j].run();
-      }
-    }
+    // for (let i = 0; i < cols; i++){//Line Indicators Are Shown#####
+    //   for (let j = 0; j < rows; j++){
+    //     lineIndicator[i][j].run();
+    //   }
+    // }
 
     for ( let i = 0; i < balls.length; i++){//Balls Are Shown#####
       balls[i].run();
