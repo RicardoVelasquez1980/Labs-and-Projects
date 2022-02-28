@@ -2,12 +2,12 @@
 //Game Of Life
 
 function setup() {
-  cnv = createCanvas(windowWidth - 20, windowHeight - 60);
+  cnv = createCanvas(800, 800);
   cnv.position((windowWidth - width) / 2, 30);
 
 }
 
 function draw() {
-  background(245);
+  background(77);
 
 }
