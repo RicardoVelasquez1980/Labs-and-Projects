@@ -15,19 +15,35 @@ class LifeCell extends p5.Vector{
 
   findNeighbors(x, y){
     let neighbors = [];
-    let distFromCell = 1;
 
-    for (let y = -1; y < 2; y++){
-      neighbors[y + 1] = [];
-      for (let x = -1; x < 2; x++){
-        neighbors[y + 1]
-
-      }
+    for (let i = 0; i < 8; i++){
+      neighbors[i] = [];
 
     }
 
+    neighbors[0][0] = y - 1;
+    neighbors[0][1] = x - 1;
 
-    }
+    neighbors[1][0] = y - 1;
+    neighbors[1][1] = x;
+
+    neighbors[2][0] = y - 1;
+    neighbors[2][1] = x + 1;
+
+    neighbors[3][0] = y ;
+    neighbors[3][1] = x - 1;
+
+    neighbors[4][0] = y ;
+    neighbors[4][1] = x + 1;
+
+    neighbors[5][0] = y + 1;
+    neighbors[5][1] = x - 1;
+
+    neighbors[6][0] = y + 1;
+    neighbors[6][1] = x;
+
+    neighbors[7][0] = y + 1;
+    neighbors[7][1] = x + 1;
 
     return neighbors;
 
