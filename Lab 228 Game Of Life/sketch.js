@@ -26,13 +26,14 @@ function draw() {
 }
 
 function mousePressed(){
-  for (let x = 0; x < lifeCells.length; x++){
-    for (let y = 0; y < lifeCells[x].length; y++){
-      if (lifeCells[x][y].mouseOverCell && !lifeCells[x][y].alive){
-        lifeCells[x][y].alive = true;
+  //Checks For Every Cell In Order To Make The Cell Alive If Used Clicks On Cell#####
+  for (let y = 0; y < lifeCells.length; y++){
+    for (let x = 0; x < lifeCells[y].length; x++){
+      if (lifeCells[y][x].mouseOverCell && !lifeCells[y][x].alive){
+        lifeCells[y][x].alive = true;
 
-      } else if (lifeCells[x][y].mouseOverCell && lifeCells[x][y].alive){
-        lifeCells[x][y].alive = false;
+      } else if (lifeCells[y][x].mouseOverCell && lifeCells[y][x].alive){
+        lifeCells[y][x].alive = false;
 
       }
 
@@ -45,19 +46,20 @@ function mousePressed(){
 //Start Function runoadLifeCells##########
 function runLoadLifeCells(typ){
   if (typ === 'LOAD'){
-    for (let x = 0; x < cols; x++){
-      lifeCells[x] = [];
+    for (let y = 0; y < rows; y++){
+      lifeCells[y] = [];//Declaring 2D Array#####
 
-      for (let y = 0; y < rows; y++){
-        lifeCells[x][y] = new LifeCell(x * cellWidth, y * cellHeight);
+      for (let x = 0; x < cols; x++){
+        lifeCells[y][x] = new LifeCell(x * cellWidth, y * cellHeight, x, y);
+
       }
 
     }
 
   } else if (typ === 'RUN'){
-    for (let x = 0; x < lifeCells.length; x++){
-      for (let y = 0; y < lifeCells[x].length; y++){
-        lifeCells[x][y].run();
+    for (let y = 0; y < lifeCells.length; y++){
+      for (let x = 0; x < lifeCells[y].length; x++){
+        lifeCells[y][x].run();
 
       }
 
