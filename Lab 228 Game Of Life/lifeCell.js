@@ -9,7 +9,13 @@ class LifeCell extends p5.Vector{
     this.alive = false;
     this.mouseOverCell = false;
     this.clr = [78, 212, 103, 255];
-    this.neighbors = this.findNeighbors(xIndex, yIndex);;//Array Containing 3 - 9 Cells#####
+    if (xIndex === 1 && yIndex === 1){
+      this.neighbors = this.findNeighbors(xIndex, yIndex);;//Array Containing 3 - 9 Cells#####
+
+    }
+
+    this.xIndex = xIndex;
+    this.yIndex = yIndex;
 
   }
 
@@ -58,7 +64,11 @@ class LifeCell extends p5.Vector{
 
     this.render();
     this.mouseOverCell = this.checkMouse();
-    // this.rules();
+
+    if (this.xIndex === 1 && this.yIndex === 1){
+      this.rules();
+
+    }
 
     this.findNeighbors();
 
@@ -74,6 +84,18 @@ class LifeCell extends p5.Vector{
 
   }
 
+  rules(){
+    let y = this.neighbors[0][0];
+    let x = this.neighbors[0][1];
+    // console.log("x: " + x + " y: " + y);
+
+    this.alive = lifeCells[y][x].alive ? true : false;
+
+    // this.overPop();
+    // this.underPop();
+
+  }
+
   checkMouse(){
     if (mouseX >= this.x && mouseX <= this.x + this.sideLength &&
     mouseY >= this.y && mouseY <= this.y + this.sideLength){
@@ -83,6 +105,11 @@ class LifeCell extends p5.Vector{
       return false;
 
     }
+
+  }
+
+  creation(){
+
 
   }
 
