@@ -14,6 +14,8 @@ class LifeCell extends p5.Vector{
 
     }
 
+    this.liveCells = 0;
+
     this.xIndex = xIndex;
     this.yIndex = yIndex;
 
@@ -85,11 +87,24 @@ class LifeCell extends p5.Vector{
   }
 
   rules(){
-    let y = this.neighbors[0][0];
-    let x = this.neighbors[0][1];
+    let y = 0;
+    let x = 0;
     // console.log("x: " + x + " y: " + y);
 
-    this.alive = lifeCells[y][x].alive ? true : false;
+    for (let i = 0; this.neighbors.length; i++){
+      y = this.neighbors[i][0];
+      x = this.neighbors[i][1];
+
+      if (lifeCells[y][x].alive){
+        this.liveCells++;
+        
+      }
+
+    }
+
+
+
+    // this.alive = lifeCells[y][x].alive ? true : false;
 
     // this.overPop();
     // this.underPop();
