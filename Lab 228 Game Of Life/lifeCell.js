@@ -19,6 +19,8 @@ class LifeCell extends p5.Vector{
 
   findNeighbors(x, y){
     let neighbors = [];
+    let min = 0;
+    let max = cols - 1;
 
     // neighbors[0] = "y1: " + (y - 1);
     // neighbors[1] = "x1: " + (x - 1);
@@ -77,7 +79,7 @@ class LifeCell extends p5.Vector{
     neighbors[15] = x + 1;
 
     for (let i = neighbors.length - 2; i >= 0; i -= 2){
-      if (neighbors[i] < 0 || neighbors[i + 1] < 0 || neighbors[i] > 19 || neighbors[i + 1] > 19){
+      if (neighbors[i] < min || neighbors[i + 1] < min || neighbors[i] > max || neighbors[i + 1] > max){
         neighbors.splice(i, 2);
 
       }

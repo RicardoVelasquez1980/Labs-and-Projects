@@ -1,7 +1,9 @@
-//Ricardo Velasquez
+ //Ricardo Velasquez
 //Game Of Life
 
-let cols = 20, rows = cols;
+//+++++++++++++++++++++++++++++++++++++smiley face button!!!!!!!
+
+let cols = 50, rows = cols;
 let cellWidth, cellHeight;
 
 let lifeCells = [];
