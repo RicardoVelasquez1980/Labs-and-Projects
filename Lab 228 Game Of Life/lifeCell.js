@@ -9,12 +9,8 @@ class LifeCell extends p5.Vector{
     this.alive = false;
     this.mouseOverCell = false;
     this.clr = [78, 212, 103, 255];
-    if (xIndex === 1 && yIndex === 1){
-      this.neighbors = this.findNeighbors(xIndex, yIndex);;//Array Containing 3 - 9 Cells#####
 
-    }
-
-    this.liveCells = 0;
+    this.neighbors = this.findNeighbors(xIndex, yIndex);;//Array Containing 3 - 9 Cells#####
 
     this.xIndex = xIndex;
     this.yIndex = yIndex;
@@ -24,34 +20,71 @@ class LifeCell extends p5.Vector{
   findNeighbors(x, y){
     let neighbors = [];
 
-    for (let i = 0; i < 8; i++){
-      neighbors[i] = [];
+    // neighbors[0] = "y1: " + (y - 1);
+    // neighbors[1] = "x1: " + (x - 1);
+    //
+    // neighbors[2] = "y2: " + (y - 1);
+    // neighbors[3] = "x2: " + (x);
+    //
+    // neighbors[4] = "y3: " + (y - 1);
+    // neighbors[5] = "x3: " + (x + 1);
+    //
+    // neighbors[6] = "y4: " + (y);
+    // neighbors[7] = "x4: " + (x - 1);
+    //
+    // neighbors[8] = "y5: " + (y);
+    // neighbors[9] = "x5: " + (x + 1);
+    //
+    // neighbors[10] = "y6: " + (y + 1);
+    // neighbors[11] = "x6: " + (x - 1);
+    //
+    // neighbors[12] = "y7: " + (y + 1);
+    // neighbors[13] = "x7: " + (x);
+    //
+    // neighbors[14] = "y8: " + (y + 1);
+    // neighbors[15] = "x8: " + (x + 1);
+    //
+    // for (let i = neighbors.length - 2; i >= 0; i -= 2){
+    //   if (neighbors[i][4] === "-" || neighbors[i + 1][4] === "-"){
+    //     neighbors.splice(i, 2);
+    //
+    //   }
+    //
+    // }
+
+    neighbors[0] = y - 1;
+    neighbors[1] = x - 1;
+
+    neighbors[2] = y - 1;
+    neighbors[3] = x;
+
+    neighbors[4] = y - 1;
+    neighbors[5] = x + 1;
+
+    neighbors[6] = y;
+    neighbors[7] = x - 1;
+
+    neighbors[8] = y;
+    neighbors[9] = x + 1;
+
+    neighbors[10] = y + 1;
+    neighbors[11] = x - 1;
+
+    neighbors[12] = y + 1;
+    neighbors[13] = x;
+
+    neighbors[14] = y + 1;
+    neighbors[15] = x + 1;
+
+    for (let i = neighbors.length - 2; i >= 0; i -= 2){
+      if (neighbors[i] < 0 || neighbors[i + 1] < 0 || neighbors[i] > 19 || neighbors[i + 1] > 19){
+        neighbors.splice(i, 2);
+
+      }
 
     }
 
-    neighbors[0][0] = y - 1;
-    neighbors[0][1] = x - 1;
-
-    neighbors[1][0] = y - 1;
-    neighbors[1][1] = x;
-
-    neighbors[2][0] = y - 1;
-    neighbors[2][1] = x + 1;
-
-    neighbors[3][0] = y ;
-    neighbors[3][1] = x - 1;
-
-    neighbors[4][0] = y ;
-    neighbors[4][1] = x + 1;
-
-    neighbors[5][0] = y + 1;
-    neighbors[5][1] = x - 1;
-
-    neighbors[6][0] = y + 1;
-    neighbors[6][1] = x;
-
-    neighbors[7][0] = y + 1;
-    neighbors[7][1] = x + 1;
+    console.log(this);
 
     return neighbors;
 
@@ -67,12 +100,12 @@ class LifeCell extends p5.Vector{
     this.render();
     this.mouseOverCell = this.checkMouse();
 
-    if (this.xIndex === 1 && this.yIndex === 1){
+    if (!pause){
       this.rules();
 
     }
 
-    this.findNeighbors();
+    // this.findNeighbors();
 
   }
 
@@ -89,22 +122,30 @@ class LifeCell extends p5.Vector{
   rules(){
     let y = 0;
     let x = 0;
+    let liveCells = 0;
     // console.log("x: " + x + " y: " + y);
 
-    for (let i = 0; this.neighbors.length; i++){
-      y = this.neighbors[i][0];
-      x = this.neighbors[i][1];
+    for (let i = 0; i < this.neighbors.length; i += 2){
+      y = this.neighbors[i];
+      x = this.neighbors[i + 1];
 
       if (lifeCells[y][x].alive){
-        this.liveCells++;
-        
+        liveCells++;
+        // console.log(liveCells);
+
       }
 
     }
 
+    if (liveCells === 3){
+      this.alive = true;
 
+    } else if (liveCells < 2 || liveCells > 3){
+      this.alive = false;
 
-    // this.alive = lifeCells[y][x].alive ? true : false;
+    }
+
+    // this.alive = liveCells === 3 ? true : false;
 
     // this.overPop();
     // this.underPop();

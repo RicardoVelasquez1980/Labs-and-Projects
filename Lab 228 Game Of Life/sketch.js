@@ -6,15 +6,19 @@ let cellWidth, cellHeight;
 
 let lifeCells = [];
 
+let pause = true;
+
 function setup() {
   cnv = createCanvas(650, 650);
   cnv.position((windowWidth - width) / 2, 15);
-  background(77);//Get Rid Of The Change From White To Color In Draw Ever Refresh#####
+  background(152);//Get Rid Of The Change From White To Color In Draw Ever Refresh#####
 
   cellWidth = width / cols;
   cellHeight = cellWidth;
 
   runLoadLifeCells('LOAD');
+
+  frameRate(7.5);
 
 }
 
@@ -38,6 +42,18 @@ function mousePressed(){
       }
 
     }
+
+  }
+
+}
+
+function keyPressed(){
+  // console.log(keyCode);
+  if (keyCode === 80 && pause === true){
+    pause = false;
+
+  } else if (keyCode === 80 && pause === false){
+    pause = true;
 
   }
 
