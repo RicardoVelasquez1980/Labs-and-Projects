@@ -8,7 +8,7 @@ let cellWidth, cellHeight;
 
 let lifeCells = [];
 
-let pause;
+let pause, pauseBtn;
 let reset = 82;
 
 let speed;

@@ -28,7 +28,17 @@ class PauseButton extends p5.Vector{
   renderNotPaused(){}
 
   checkMouse(){
-    if (mouseX < this.x )
+    if (mouseX <= this.x + this.btnSz / 2 &&
+    mouseX >= this.x - this.btnSz / 2 &&
+    mouseY <= this.y + this.btnSz / 2 &&
+    mouseY >= this.y - this.btnSz / 2){
+      return true;
+
+    } else {
+      return false;
+      
+    }
+
   }
 
 }
