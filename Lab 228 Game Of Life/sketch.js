@@ -8,7 +8,7 @@ let cellWidth, cellHeight;
 
 let lifeCells = [];
 
-let pause, pauseBtn;
+let pause;
 let reset = 82;
 
 let speed;
@@ -17,8 +17,6 @@ function setup() {
   cnv = createCanvas(650, 650);
   cnv.position((windowWidth - width) / 2, 15);
   background(152);//Get Rid Of The Change From White To Color In Draw Ever Refresh#####
-
-
 
   pause = true;
 
