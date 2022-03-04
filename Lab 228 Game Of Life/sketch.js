@@ -1,26 +1,50 @@
- //Ricardo Velasquez
+//Ricardo Velasquez
 //Game Of Life
 
 //+++++++++++++++++++++++++++++++++++++smiley face button!!!!!!!
 
-let cols = 50, rows = cols;
+let cols, rows;
 let cellWidth, cellHeight;
 
 let lifeCells = [];
 
-let pause = true;
+let pause;
+let reset = 82;
+
+let speed;
 
 function setup() {
   cnv = createCanvas(650, 650);
   cnv.position((windowWidth - width) / 2, 15);
   background(152);//Get Rid Of The Change From White To Color In Draw Ever Refresh#####
 
-  cellWidth = width / cols;
+
+
+  pause = true;
+
+  let sizeTxt = createP("Size");
+  sizeTxt.position((windowWidth - width) / 2 - 90, 0)
+  cols = createSlider(5, 200, 25, 1);
+  cols.position((windowWidth - width) / 2 - 150, 30);
+  cols.mouseReleased(lifeCellRemake);
+
+  rows = cols.value();;
+
+  cellWidth = width / cols.value();
   cellHeight = cellWidth;
+
+  lifeCells = [];
 
   runLoadLifeCells('LOAD');
 
-  frameRate(7.5);
+
+  let speedTxt = createP("Speed");
+  speedTxt.position((windowWidth - width) / 2 - 90, 60);
+  speed = createSlider(1, 30, 5, 0.5);
+  speed.position((windowWidth - width) / 2 - 150, 90);
+  speed.mouseReleased(frameChange);
+
+  frameRate(speed.value());
 
 }
 
@@ -59,6 +83,28 @@ function keyPressed(){
 
   }
 
+  if (keyCode === reset){
+    removeElements();
+    setup();
+
+  }
+
+}
+
+function lifeCellRemake(){
+  rows = cols.value();;
+
+  cellWidth = width / cols.value();
+  cellHeight = cellWidth;
+
+  lifeCells = [];
+  runLoadLifeCells('LOAD');
+
+}
+
+function frameChange(){
+  frameRate(speed.value());
+
 }
 
 //Start Function runoadLifeCells##########
@@ -67,7 +113,7 @@ function runLoadLifeCells(typ){
     for (let y = 0; y < rows; y++){
       lifeCells[y] = [];//Declaring 2D Array#####
 
-      for (let x = 0; x < cols; x++){
+      for (let x = 0; x < cols.value(); x++){
         lifeCells[y][x] = new LifeCell(x * cellWidth, y * cellHeight, x, y);
 
       }

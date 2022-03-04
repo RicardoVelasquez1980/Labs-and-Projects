@@ -20,7 +20,7 @@ class LifeCell extends p5.Vector{
   findNeighbors(x, y){
     let neighbors = [];
     let min = 0;
-    let max = cols - 1;
+    let max = cols.value() - 1;
 
     // neighbors[0] = "y1: " + (y - 1);
     // neighbors[1] = "x1: " + (x - 1);
@@ -86,7 +86,7 @@ class LifeCell extends p5.Vector{
 
     }
 
-    console.log(this);
+    // console.log(this);
 
     return neighbors;
 
