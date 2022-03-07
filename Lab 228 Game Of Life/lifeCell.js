@@ -16,7 +16,7 @@ class LifeCell extends p5.Vector{
     this.yIndex = yIndex;
 
   }
-  
+
   findNeighbors(x, y){
     let neighbors = [];
     let min = 0;
@@ -155,8 +155,8 @@ class LifeCell extends p5.Vector{
   }
 
   checkMouse(){
-    if (mouseX >= this.x && mouseX <= this.x + this.sideLength &&
-    mouseY >= this.y && mouseY <= this.y + this.sideLength){
+    if (mouseX - (width / 2) >= this.x && mouseX - (width / 2) <= this.x + this.sideLength &&
+    mouseY - (height / 2) >= this.y && mouseY - (height / 2) <= this.y + this.sideLength){
       return true;
 
     } else {

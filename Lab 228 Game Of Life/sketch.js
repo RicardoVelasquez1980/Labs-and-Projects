@@ -14,7 +14,7 @@ let reset = 82;
 let speed;
 
 function setup() {
-  cnv = createCanvas(650, 650);
+  cnv = createCanvas(windowHeight, windowHeight, WEBGL);
   cnv.position((windowWidth - width) / 2, 15);
   background(152);//Get Rid Of The Change From White To Color In Draw Ever Refresh#####
 
@@ -22,7 +22,7 @@ function setup() {
 
   let sizeTxt = createP("Size");
   sizeTxt.position((windowWidth - width) / 2 - 90, 0)
-  cols = createSlider(5, 200, 25, 1);
+  cols = createSlider(5, 400, 25, 1);
   cols.position((windowWidth - width) / 2 - 150, 30);
   cols.mouseReleased(lifeCellRemake);
 
@@ -112,7 +112,7 @@ function runLoadLifeCells(typ){
       lifeCells[y] = [];//Declaring 2D Array#####
 
       for (let x = 0; x < cols.value(); x++){
-        lifeCells[y][x] = new LifeCell(x * cellWidth, y * cellHeight, x, y);
+        lifeCells[y][x] = new LifeCell(x * cellWidth - (width / 2), y * cellHeight - (height / 2), x, y);
 
       }
 
