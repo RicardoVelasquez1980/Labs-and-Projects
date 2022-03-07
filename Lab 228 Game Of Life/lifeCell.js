@@ -16,7 +16,7 @@ class LifeCell extends p5.Vector{
     this.yIndex = yIndex;
 
   }
-//reese is cool
+  
   findNeighbors(x, y){
     let neighbors = [];
     let min = 0;
