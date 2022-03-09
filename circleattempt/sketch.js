@@ -8,7 +8,7 @@ function setup() {
   cnv.position((windowWidth - width) / 2, 30);
   background(0);
 
-  loadRunPB("LOAD", 10);
+  loadRunPB("LOAD");
 
 }
 
@@ -22,15 +22,12 @@ function draw() {
 //Start Function loadRunPB##########
 function loadRunPB(typ, qty){
   if (typ === 'LOAD'){
-    for (let i = 0; i < qty; i++){
-      pixelBalls[i] = new Circ();
-
-    }
+    pixelBalls[0] = new Circ();
 
   } else if (typ === 'RUN'){
     for (let i = 0; i < qty; i++){
       pixelBalls[i].run();
-      
+
     }
 
   }
