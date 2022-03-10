@@ -3,9 +3,9 @@
 
 //Start Class Circ##########
 class Circ extends p5.Vector{
-  constructor(){
-    super(random(width), random(height));
-    this.diam = random(100);
+  constructor(x, y, d){
+    super(x, y);
+    this.diam = d;
     this.isColliding = this.checkCollision();
 
   }
@@ -22,7 +22,7 @@ class Circ extends p5.Vector{
     fill(255);
     // noStroke();
     stroke(0);
-    strokeWeight(2);
+    strokeWeight(4);
     arc(this.x, this.y, this.diam, this.diam, 0, TWO_PI);
     pop();
 
@@ -61,8 +61,13 @@ class Circ extends p5.Vector{
   }
 
   giveBirth(){
+    let d = random(20, 100);
+    let x = this.x + cos(random(TWO_PI)) * ((this.diam / 2) + (d / 2)) * 0.75;
+    let y = this.y + sin(random(TWO_PI)) * ((this.diam / 2) + (d / 2)) * 0.75;
+
     if (pixelBalls.length < totalPB){
-      pixelBalls.push(new Circ());
+      pixelBalls.push(new Circ(x, y, d));
+
     }
 
   }

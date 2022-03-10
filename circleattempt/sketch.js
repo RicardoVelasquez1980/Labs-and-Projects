@@ -1,7 +1,7 @@
 //Ricardo Velasquez
 //circleattempt
 
-let pixelBalls = [], totalPB = 1000;
+let pixelBalls = [], totalPB = 15000;
 
 let timer = 0, totalStill = 0;
 
@@ -31,7 +31,7 @@ function draw() {
 //Start Function loadRunPB##########
 function loadRunPB(typ){
   if (typ === 'LOAD'){
-    pixelBalls[0] = new Circ();
+    pixelBalls[0] = new Circ(random(width), random(height), random(20, 100));
 
   } else if (typ === 'RUN'){
     for (let i = pixelBalls.length - 1; i >= 0; i--){
