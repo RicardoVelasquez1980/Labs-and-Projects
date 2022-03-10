@@ -1,21 +1,30 @@
 //Ricardo Velasquez
 //circleattempt
 
-let pixelBalls = [];
+let pixelBalls = [], totalPB = 1000;
+
+let timer = 0, totalStill = 0;
 
 function setup() {
   cnv = createCanvas(windowHeight - 60, windowHeight - 60);
   cnv.position((windowWidth - width) / 2, 30);
-  background(0);
+  background(100);
 
   loadRunPB("LOAD");
 
 }
 
 function draw() {
-  background(0);
+  background(100);
+
+  timer += 1;
 
   loadRunPB("RUN");
+
+  if (totalStill === pixelBalls.length){
+    console.log(timer);
+
+  }
 
 }
 
@@ -25,10 +34,16 @@ function loadRunPB(typ){
     pixelBalls[0] = new Circ();
 
   } else if (typ === 'RUN'){
-    for (let i = 0; i < pixelBalls.length; i++){
+    for (let i = pixelBalls.length - 1; i >= 0; i--){
       pixelBalls[i].run();
 
+      if (pixelBalls[i].isColliding){
+        pixelBalls.splice(i, 1);
+      }
+
     }
+
+
 
   }
 
