@@ -3,16 +3,19 @@
 
 //Start Class Circ##########
 class Circ extends p5.Vector{
-  constructor(x, y, d){
-    super(x, y);
-    this.diam = d;
-    this.isColliding = this.checkCollision();
+  constructor(){
+    super(random(width), random(height));
+    this.rad = 0;
+    this.strokeSz = 0;
+    this.incSpeed = random(0.001, 0.1)
+    this.isColliding = this.checkStartCollision();
 
   }
 
   run(){
     this.render();
-    // this.checkCollision();
+    this.inc();
+    this.isColliding
     this.giveBirth();
 
   }
@@ -22,31 +25,28 @@ class Circ extends p5.Vector{
     fill(255);
     // noStroke();
     stroke(0);
-    strokeWeight(4);
-    arc(this.x, this.y, this.diam, this.diam, 0, TWO_PI);
+    strokeWeight(this.strokeSz);
+    arc(this.x, this.y, this.rad, this.rad, 0, TWO_PI);
     pop();
 
 
-//Point For Testing%%%%%%%%%%%%%%%%
-    if (this === pixelBalls[0]){
-      push();
-      noFill();
-      stroke(255, 0, 0);
-      strokeWeight(5);
-      point(this.x, this.y);
-      pop();
+  }
 
-    }
+  inc(){
+    this.rad += this.incSpeed;
+
+    if (this.strokeSz < 5)
+    this.strokeSz += this.incSpeed / 4;
 
   }
 
-  checkCollision(){
+  checkStartCollision(){
     let distance = 100;//Temp Number, Will Be Changed#####
     for (let i = pixelBalls.length - 1; i >= 0; i--){
       if (this !== pixelBalls[i]){
         distance = this.dist(pixelBalls[i]);
 
-        if (distance < (this.diam / 2) + (pixelBalls[i].diam / 2)){
+        if (distance < 2){
           return true;
 
         }
@@ -55,18 +55,13 @@ class Circ extends p5.Vector{
 
     }
 
-    totalStill++;
     return false;
 
   }
 
   giveBirth(){
-    let d = random(20, 100);
-    let x = this.x + cos(random(TWO_PI)) * ((this.diam / 2) + (d / 2)) * 0.75;
-    let y = this.y + sin(random(TWO_PI)) * ((this.diam / 2) + (d / 2)) * 0.75;
-
     if (pixelBalls.length < totalPB){
-      pixelBalls.push(new Circ(x, y, d));
+      pixelBalls.push(new Circ());
 
     }
 

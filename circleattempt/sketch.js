@@ -1,9 +1,7 @@
 //Ricardo Velasquez
 //circleattempt
 
-let pixelBalls = [], totalPB = 15000;
-
-let timer = 0, totalStill = 0;
+let pixelBalls = [], totalPB = 100;
 
 function setup() {
   cnv = createCanvas(windowHeight - 60, windowHeight - 60);
@@ -17,21 +15,14 @@ function setup() {
 function draw() {
   background(100);
 
-  timer += 1;
-
   loadRunPB("RUN");
-
-  if (totalStill === pixelBalls.length){
-    console.log(timer);
-
-  }
 
 }
 
 //Start Function loadRunPB##########
 function loadRunPB(typ){
   if (typ === 'LOAD'){
-    pixelBalls[0] = new Circ(random(width), random(height), random(20, 100));
+    pixelBalls[0] = new Circ();
 
   } else if (typ === 'RUN'){
     for (let i = pixelBalls.length - 1; i >= 0; i--){
