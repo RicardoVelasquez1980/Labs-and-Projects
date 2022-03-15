@@ -19,11 +19,15 @@ class Player extends p5.Vector{
 
   }
 
+  playerControls(){
+    this.move();
+    this.jump();
+    
+  }
+
   move(){}
 
   jump(){}
-
-  checkCollision(){}
 
 }
 //End Class Player##########
