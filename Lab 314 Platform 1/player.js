@@ -8,6 +8,7 @@ class Player extends p5.Vector{
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0.1);
     this.speed = 3;
+    this.sz = 40;
     this.onPlatform = false;
     this.canJump = false;
 
@@ -18,7 +19,7 @@ class Player extends p5.Vector{
     fill(255);
     stroke(255, 0, 0);
     strokeWeight(1);
-    ellipse(this.x, this.y, 40);
+    ellipse(this.x, this.y, this.sz);
     pop();
 
     push();
@@ -30,11 +31,18 @@ class Player extends p5.Vector{
   }
 
   update(){
+    //Player Input#####
     this.move();
+
+    //Background Forces#####
+    if (!this.onPlatform) this.gravity();
+
+    //Checks#####
     this.onPlatform = this.platformCollision();
 
   }
 
+//Start Of Plyer Input Functions##########
   move(){
     //Move Left/Right#####
     if (keyIsDown(LEFT_ARROW)){
@@ -48,32 +56,40 @@ class Player extends p5.Vector{
 
     }
 
-    //Fall & Fall Prevention#####
-    if (!this.onPlatform){
-      this.vel.add(this.acc);
-
-    }
-
     //Change Pos#####
     this.add(this.vel);
 
   }
 
   jump(){
+    this.vel.y = 0;
     if (this.onPlatform){
       this.vel.y = -3;
 
     }
 
   }
+//End Of Plyer Input Functions##########
 
+
+//Start Of Background Forces Functions##########
+  gravity(){
+    this.vel.add(this.acc);
+
+  }
+//End Of Background Forces Functions##########
+
+
+//Start Of Check Functions##########
   platformCollision(){
     for (let i = 0; i < gameName.platforms.length; i++){
-      if (this.y + 20 >= gameName.platforms[i].topBound &&
-          this.y - 20 <= gameName.platforms[i].bottomBound &&
-          this.x + 20 >= gameName.platforms[i].leftBound &&
-          this.x - 20 <= gameName.platforms[i].rightBound){
+      if (this.y + this.sz / 2 >= gameName.platforms[i].topBound &&
+          this.y + this.sz / 2 <= gameName.platforms[i].bottomBound &&
+          this.x + this.sz / 2 >= gameName.platforms[i].leftBound &&
+          this.x - this.sz / 2 <= gameName.platforms[i].rightBound &&
+          this.vel.y > 0){
             this.vel.y = 0;
+
             return true;
 
           }
@@ -82,6 +98,8 @@ class Player extends p5.Vector{
     return false;
 
   }
+//Start Of Check Functions##########
+
 
 }
 //End Class Player##########

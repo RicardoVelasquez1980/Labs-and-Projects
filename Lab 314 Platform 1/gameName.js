@@ -23,8 +23,9 @@ class GameName{
   }
 
   init(){
-    this.player = new Player(175, 250);
     this.platforms = this.loadPlatforms(2);
+
+    this.player = new Player(this.platforms[0].x + 20, this.platforms[0].y - 21);
 
   }
 
