@@ -73,8 +73,8 @@ class Player extends p5.Vector{
           this.y - 20 <= gameName.platforms[i].bottomBound &&
           this.x + 20 >= gameName.platforms[i].leftBound &&
           this.x - 20 <= gameName.platforms[i].rightBound){
-            return true;
             this.vel.y = 0;
+            return true;
 
           }
 
