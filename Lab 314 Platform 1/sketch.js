@@ -20,6 +20,6 @@ function draw() {
 }
 
 function keyPressed(){
-  if (keyCode === 32) gameName.player.vel.y = 2;
+  if (keyCode === 32 || keyCode === UP_ARROW) gameName.player.jump();
 
 }

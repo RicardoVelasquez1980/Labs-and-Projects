@@ -6,6 +6,11 @@ class Platform extends p5.Vector{
   constructor(x, y, lngth){
     super(x, y);
     this.length = lngth;
+    this.width = 30
+    this.topBound = this.y;
+    this.bottomBound = this.y + this.width;
+    this.leftBound = this.x;
+    this.rightBound = this.x + this.length;
 
   }
 
@@ -13,7 +18,7 @@ class Platform extends p5.Vector{
     push();
     fill(255, 200, 255);
     noStroke();
-    rect(this.x, this.y, this.length, 30);
+    rect(this.x, this.y, this.length, this.width);
     pop();
 
   }

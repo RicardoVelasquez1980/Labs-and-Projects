@@ -4,8 +4,10 @@
 //Start Class GameName##########
 class GameName{
   constructor(){
-    this.player = new Player(175, 250);
-    this.platforms = this.loadPlatforms(2);
+    this.player;
+    this.platforms;
+
+    this.init();
 
   }
 
@@ -17,6 +19,12 @@ class GameName{
     }
 
     return platformArr;
+
+  }
+
+  init(){
+    this.player = new Player(175, 250);
+    this.platforms = this.loadPlatforms(2);
 
   }
 
