@@ -18,3 +18,8 @@ function draw() {
   gameName.run()
 
 }
+
+function keyPressed(){
+  if (keyCode === 32) gameName.player.vel.y = 2;
+
+}

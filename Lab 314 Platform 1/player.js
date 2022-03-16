@@ -7,6 +7,8 @@ class Player extends p5.Vector{
     super(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
+    this.speed = 7;
+    this.onPlatform = false;
 
   }
 
@@ -19,15 +21,35 @@ class Player extends p5.Vector{
 
   }
 
-  playerControls(){
-    this.move();
-    this.jump();
-    
+  update(){
+    this.playerInput();
+    this.movement();
+    this.platformCollision();
+
   }
 
-  move(){}
+  playerInput(){
+    //Move Left/Right#####
+    if (keyIsDown(LEFT_ARROW)){
+      this.vel.x = -this.speed;
 
-  jump(){}
+    } else if (keyIsDown(RIGHT_ARROW)){
+      this.vel.x = this.speed;
+
+    } else {
+      this.vel.x = 0;
+
+    }
+
+  }
+
+  movement(){
+    this.vel.add(this.acc);
+    this.add(this.vel);
+
+  }
+
+  platformCollision(){}
 
 }
 //End Class Player##########

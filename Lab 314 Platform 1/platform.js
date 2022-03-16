@@ -18,7 +18,5 @@ class Platform extends p5.Vector{
 
   }
 
-  checkCollision(){}
-
 }
 //End Class Platform##########
