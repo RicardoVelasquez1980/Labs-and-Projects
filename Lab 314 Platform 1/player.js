@@ -65,7 +65,7 @@ class Player extends p5.Vector{
 
   platformCollision(){
     for (let i = 0; i < gameName.platforms.length; i++){
-      // if (this.x )
+      if (this.x < )
 
     }
 
