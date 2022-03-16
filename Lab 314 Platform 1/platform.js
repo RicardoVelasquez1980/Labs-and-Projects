@@ -16,7 +16,7 @@ class Platform extends p5.Vector{
 
   render(){
     push();
-    fill(255, 200, 255);
+    fill(255);
     noStroke();
     rect(this.x, this.y, this.length, this.width);
     pop();

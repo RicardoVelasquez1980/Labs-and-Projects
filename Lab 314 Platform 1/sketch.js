@@ -13,7 +13,7 @@ function setup() {
 }
 
 function draw() {
-  background(175);
+  background(0);
 
   gameName.run()
 

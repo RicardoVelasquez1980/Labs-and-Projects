@@ -6,8 +6,8 @@ class Player extends p5.Vector{
   constructor(x, y){
     super(x, y);
     this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0.05);
-    this.speed = 7;
+    this.acc = createVector(0, 0.1);
+    this.speed = 3;
     this.onPlatform = false;
     this.canJump = false;
 
@@ -15,8 +15,9 @@ class Player extends p5.Vector{
 
   render(){
     push();
-    fill(0, 255, 0);
-    noStroke();
+    fill(255);
+    stroke(255, 0, 0);
+    strokeWeight(1);
     ellipse(this.x, this.y, 40);
     pop();
 
@@ -30,7 +31,7 @@ class Player extends p5.Vector{
 
   update(){
     this.move();
-    this.platformCollision();
+    this.onPlatform = this.platformCollision();
 
   }
 
@@ -47,7 +48,7 @@ class Player extends p5.Vector{
 
     }
 
-    //Fall#####
+    //Fall & Fall Prevention#####
     if (!this.onPlatform){
       this.vel.add(this.acc);
 
@@ -59,15 +60,26 @@ class Player extends p5.Vector{
   }
 
   jump(){
-    this.vel.y = -3;
+    if (this.onPlatform){
+      this.vel.y = -3;
+
+    }
 
   }
 
   platformCollision(){
     for (let i = 0; i < gameName.platforms.length; i++){
-      if (this.x < )
+      if (this.y + 20 >= gameName.platforms[i].topBound &&
+          this.y - 20 <= gameName.platforms[i].bottomBound &&
+          this.x + 20 >= gameName.platforms[i].leftBound &&
+          this.x - 20 <= gameName.platforms[i].rightBound){
+            return true;
+            this.vel.y = 0;
+
+          }
 
     }
+    return false;
 
   }
 
