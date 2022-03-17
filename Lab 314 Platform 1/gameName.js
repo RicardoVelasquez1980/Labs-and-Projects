@@ -14,7 +14,8 @@ class GameName{
   loadPlatforms(qty){
     let platformArr = [];
     for (let i = 0; i < qty; i++){
-      platformArr[i] = new Platform((i + 1) * 150, 300, 80);
+      // platformArr[i] = new Platform((i + 1) * 150, 300, 80);
+      platformArr[i] = new Platform((i + 1), (i + 1) * 75, 80);
 
     }
 

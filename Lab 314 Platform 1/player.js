@@ -10,7 +10,6 @@ class Player extends p5.Vector{
     this.speed = 3;
     this.sz = 40;
     this.onPlatform = false;
-    this.canJump = false;
 
   }
 
@@ -62,8 +61,9 @@ class Player extends p5.Vector{
   }
 
   jump(){
-    this.vel.y = 0;
+    console.log(this);
     if (this.onPlatform){
+      this.vel.y = 0;
       this.vel.y = -3;
 
     }
@@ -86,9 +86,10 @@ class Player extends p5.Vector{
       if (this.y + this.sz / 2 >= gameName.platforms[i].topBound &&
           this.y + this.sz / 2 <= gameName.platforms[i].bottomBound &&
           this.x + this.sz / 2 >= gameName.platforms[i].leftBound &&
-          this.x - this.sz / 2 <= gameName.platforms[i].rightBound &&
-          this.vel.y > 0){
-            this.vel.y = 0;
+          this.x - this.sz / 2 <= gameName.platforms[i].rightBound /*&&
+          this.vel.y > 0*/){
+            // this.vel.y = 0;
+            this.y = gameName.platforms[i].y - this.sz / 2;
 
             return true;
 
