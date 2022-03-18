@@ -19,13 +19,13 @@ class GameName{
       let spacing = random(30, 60);
 
       //Randomized Platform Placement#####
-      // let x = (randomGaussian(i, i) * lngth) + spacing;
-      // let y = random(height * 0.75, height * 0.25) + spacing;
-      // platformArr[i] = new Platform(floor(x), floor(y), lngth);
-
-      let x = randomGaussian(width / 2, lngth + spacing);
-      let y = randomGaussian(height / 2, lngth + spacing);
-      platformArr[i] = new Platform(x, y, lngth);
+      let x = (randomGaussian(i, i) * lngth) + spacing;
+      let y = random(height * 0.75, height * 0.25) + spacing;
+      platformArr[i] = new Platform(floor(x), floor(y), lngth);
+      //
+      // let x = randomGaussian(width / 2, lngth + spacing);
+      // let y = randomGaussian(height / 2, lngth + spacing);
+      // platformArr[i] = new Platform(x, y, lngth);
 
     }
 
