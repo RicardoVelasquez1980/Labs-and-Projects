@@ -5,10 +5,10 @@
 class Platform extends p5.Vector{
   constructor(x, y, lngth){
     super(x, y);
-    this.length = lngth;
-    this.width = 30
+    this.length = lngth;//Horizontal#####
+    this.width = 20;//Vertical#####
     this.topBound = this.y;
-    this.bottomBound = this.y + this.width;
+    this.bottomBound = this.y + this.width / 2; //Half The Width Of The Platform#####
     this.leftBound = this.x;
     this.rightBound = this.x + this.length;
 

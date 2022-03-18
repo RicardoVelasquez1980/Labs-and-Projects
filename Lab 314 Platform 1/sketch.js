@@ -20,6 +20,7 @@ function draw() {
 }
 
 function keyPressed(){
+  //If SpaceBar Or UPARROW Pressed Jump#####
   if (keyCode === 32 || keyCode === UP_ARROW) gameName.player.jump();
 
 }

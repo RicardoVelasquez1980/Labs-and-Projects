@@ -13,9 +13,19 @@ class GameName{
 
   loadPlatforms(qty){
     let platformArr = [];
+
     for (let i = 0; i < qty; i++){
-      // platformArr[i] = new Platform((i + 1) * 150, 300, 80);
-      platformArr[i] = new Platform((i + 1), (i + 1) * 75, 80);
+      let lngth = random(80, 150);
+      let spacing = random(30, 60);
+
+      //Randomized Platform Placement#####
+      // let x = (randomGaussian(i, i) * lngth) + spacing;
+      // let y = random(height * 0.75, height * 0.25) + spacing;
+      // platformArr[i] = new Platform(floor(x), floor(y), lngth);
+
+      let x = randomGaussian(width / 2, lngth + spacing);
+      let y = randomGaussian(height / 2, lngth + spacing);
+      platformArr[i] = new Platform(x, y, lngth);
 
     }
 
@@ -24,7 +34,7 @@ class GameName{
   }
 
   init(){
-    this.platforms = this.loadPlatforms(2);
+    this.platforms = this.loadPlatforms(24);
 
     this.player = new Player(this.platforms[0].x + 20, this.platforms[0].y - 21);
 
