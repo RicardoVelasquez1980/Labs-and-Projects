@@ -6,8 +6,10 @@ class Player extends p5.Vector{
   constructor(x, y){
     super(x, y);
     this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0.1);
-    this.speed = 3;
+    this.acc = createVector(0, 0.15);
+    this.speed = 5;
+    this.jumpForce = -5;
+    this.doubleJump = 0;
     this.sz = 40;
     this.onPlatform = false;//Checks If Player Is On A Platform#####
 
@@ -44,16 +46,16 @@ class Player extends p5.Vector{
 //Start Of Plyer Input Functions##########
   move(){
     //Move Left/Right#####
-    if (keyIsDown(LEFT_ARROW)){
-      this.vel.x = -this.speed;
-
-    } else if (keyIsDown(RIGHT_ARROW)){
-      this.vel.x = this.speed;
-
-    } else {
-      this.vel.x = 0;
-
-    }
+    // if (keyIsDown(LEFT_ARROW)){
+    //   this.vel.x = -this.speed;
+    //
+    // } else if (keyIsDown(RIGHT_ARROW)){
+    //   this.vel.x = this.speed;
+    //
+    // } else {
+    //   this.vel.x = 0;
+    //
+    // }
 
     //Change Pos#####
     this.add(this.vel);
@@ -61,12 +63,12 @@ class Player extends p5.Vector{
   }
 
   jump(){
-    // console.log(this);
-    if (this.onPlatform){
-      // this.vel.y = 0;
-      this.vel.y = -3;
+    if (this.doubleJump > 0){
+      this.vel.y = this.jumpForce;
 
+      this.doubleJump--;
     }
+
 
   }
 //End Of Plyer Input Functions##########
@@ -74,6 +76,8 @@ class Player extends p5.Vector{
 
 //Start Of Background Forces Functions##########
   gravity(){
+    //Downward Force#####
+    this.vel.limit(5)
     this.vel.add(this.acc);
 
   }
@@ -86,9 +90,12 @@ class Player extends p5.Vector{
       if (this.y + this.sz / 2 >= gameName.platforms[i].topBound &&
           this.y + this.sz / 2 <= gameName.platforms[i].bottomBound &&
           this.x + this.sz / 2 >= gameName.platforms[i].leftBound &&
-          this.x - this.sz / 2 <= gameName.platforms[i].rightBound){
-            this.y = gameName.platforms[i].y - this.sz / 2;
+          this.x - this.sz / 2 <= gameName.platforms[i].rightBound &&
+          this.vel.y > 0){
             this.vel.y = 0;
+            this.y = gameName.platforms[i].y - this.sz / 2;//TP Ontop of Platform#####
+
+            this.doubleJump = 2;//Reset Jumps#####
 
             return true;
 
