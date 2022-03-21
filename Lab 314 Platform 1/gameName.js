@@ -6,7 +6,7 @@ class GameName {
   constructor() {
     this.player;
     this.platforms;
-
+    
     this.init();
 
   }
