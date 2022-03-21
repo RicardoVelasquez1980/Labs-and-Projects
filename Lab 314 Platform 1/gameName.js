@@ -104,8 +104,6 @@ class GameName{
 
       }
 
-
-
     }
 
     return platformArr;
