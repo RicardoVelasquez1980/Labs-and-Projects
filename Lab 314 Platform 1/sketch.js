@@ -3,8 +3,10 @@
 
 let gameName;
 
+
+
 function setup() {
-  cnv = createCanvas(windowWidth - 300, windowHeight - 180);
+  cnv = createCanvas(819, 542);
   cnv.position((windowWidth - width) / 2, 30);
   background(0);
 

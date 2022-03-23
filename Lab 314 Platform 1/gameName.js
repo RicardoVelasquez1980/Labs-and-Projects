@@ -6,6 +6,7 @@ class GameName {
   constructor() {
     this.player;
     this.platforms;
+    this.background;
 
     this.init();
 
@@ -105,7 +106,21 @@ class GameName {
 
   }
 
+  loadBackgrounds(qty){
+    let backgrounds = [];
+
+    for (let i = 0; i < qty; i++){
+      backgrounds[i] = new Background(i);
+
+    }
+
+    return backgrounds;
+
+  }
+
     init() {
+      this.background = this.loadBackgrounds(4);
+
       this.platforms = this.loadPlatforms("LOAD", 500);
 
       // this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
@@ -120,6 +135,11 @@ class GameName {
     }
 
     render() {
+      for (let i = this.background.length - 1; i >= 0; i--){
+        this.background[i].render();
+
+      }
+
       this.player.render();
 
       for (let i = 0; i < this.platforms.length; i++) {
@@ -130,6 +150,11 @@ class GameName {
     }
 
     update() {
+      for (let i = this.background.length - 1; i >= 0; i--){
+        this.background[i].update();
+
+      }
+
       this.player.update();
 
       for (let i = 0; i < this.platforms.length; i++) {
