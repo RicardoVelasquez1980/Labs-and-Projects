@@ -33,11 +33,11 @@ class GameName {
         platformArr[i] = new Platform(x, y, lngth);
 
         if (platformArr.length > 1){
-          this.loadPlatforms("REGEN", platformArr.length, platformArr, lngth, spacing, x, y);
+          this.loadPlatforms("CHECK", platformArr.length, platformArr, lngth, spacing, x, y);
 
         }
 
-      } else if (typ === "REGEN"){
+      } else if (typ === "CHECK"){
         platformArr = platformArrP;
         lngth = lngthP;
         spacing = spacingP;
@@ -96,9 +96,11 @@ class GameName {
 
         }
 
-        if (changed > 0) this.loadPlatforms("REGEN", platformArr.length, platformArr, lngth, spacing, x, y);
+        if (changed > 0) this.loadPlatforms("CHECK", platformArr.length, platformArr, lngth, spacing, x, y);
 
-      }
+      } /*else if (typ === "NEW"){
+
+      }*/
 
     }
 
@@ -121,7 +123,7 @@ class GameName {
     init() {
       this.background = this.loadBackgrounds(4);
 
-      this.platforms = this.loadPlatforms("LOAD", 500);
+      this.platforms = this.loadPlatforms("LOAD", 750);
 
       // this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
       this.player = new Player(width * 0.25, 0);
@@ -146,6 +148,11 @@ class GameName {
         this.platforms[i].render(i);
 
       }
+
+      // if (this.platforms[250] <= width){
+      //   this.loadPlatforms("NEW", 250)
+      //
+      // }
 
     }
 
