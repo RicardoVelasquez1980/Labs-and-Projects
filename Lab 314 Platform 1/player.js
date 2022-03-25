@@ -45,18 +45,6 @@ class Player extends p5.Vector{
 
 //Start Of Plyer Input Functions##########
   move(){
-    //Move Left/Right#####
-    // if (keyIsDown(LEFT_ARROW)){
-    //   this.vel.x = -this.speed;
-    //
-    // } else if (keyIsDown(RIGHT_ARROW)){
-    //   this.vel.x = this.speed;
-    //
-    // } else {
-    //   this.vel.x = 0;
-    //
-    // }
-
     //Change Pos#####
     this.add(this.vel);
 

@@ -7,6 +7,7 @@ class GameName {
     this.player;
     this.platforms;
     this.background;
+    this.farthest;
 
     this.init();
 
@@ -98,9 +99,9 @@ class GameName {
 
         if (changed > 0) this.loadPlatforms("CHECK", platformArr.length, platformArr, lngth, spacing, x, y);
 
-      } /*else if (typ === "NEW"){
+      } else if (typ === "NEW"){
 
-      }*/
+      }
 
     }
 
@@ -125,8 +126,9 @@ class GameName {
 
       this.platforms = this.loadPlatforms("LOAD", 750);
 
-      // this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
       this.player = new Player(width * 0.25, 0);
+
+      this.farthest = this.platforms[this.platforms.length - 1].x;
 
     }
 
