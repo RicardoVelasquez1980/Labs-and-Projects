@@ -8,7 +8,7 @@ class Box extends p5.Vector{
     this.vel = createVector(0, 0);//No Velocity From The Start#####
     this.acc = createVector(0, 0);//No Acceleration From The Start#####
     this.distanceFromCell = 0;//Var Used To Stor The Distance Of A Box From ALL The Cells#####
-    this.clr = color(175, 0, 255);
+    this.clr = color(0, 0, 255);
   }
 
   run(){

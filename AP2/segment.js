@@ -6,7 +6,7 @@ class Segment extends p5.Vector{
   constructor(firstIndex, secondIndex){
     super(dots[firstIndex].x, dots[firstIndex].y);
     this.loc2 = createVector(dots[secondIndex].x, dots[secondIndex].y);
-    this.clr = color(175, 0, 255, 30);
+    this.clr = color(0, 200, 0, 30);
     this.sz = 1;
     this.lifeSpan = 255;
 

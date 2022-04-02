@@ -34,7 +34,7 @@ function preload() {
 }
 
 function setup() {
-  var cnv = createCanvas(1800, 1000);
+  var cnv = createCanvas(1400, 600);
   cnv.position((windowWidth - width) / 2, 30);
   gridWidth = 20; //Grid Width Based On The Amount Of Columns#####
   gridHeight = 20; //Grid Height Based On The Rows#####

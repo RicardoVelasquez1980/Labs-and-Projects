@@ -7,8 +7,6 @@ class Background extends p5.Vector{
     super(0, 0);
     this.vel = createVector(0, 0);
     this.img = loadImage("Layer " + (i + 1) + ".png");
-    this.img2 = this.img;
-    this.img3 = this.img;
     this.loc2 = createVector(this.img.width, 0);
     this.loc3 = createVector(-this.img.width, 0);
     this.speed = pow(2, i);
@@ -18,8 +16,8 @@ class Background extends p5.Vector{
   render(){
     this.img.resize(width, 0);
     image(this.img, this.x, this.y);
-    image(this.img2, this.loc2.x, this.loc2.y);
-    image(this.img3, this.loc3.x, this.loc3.y);
+    image(this.img, this.loc2.x, this.loc2.y);
+    image(this.img, this.loc3.x, this.loc3.y);
 
   }
 

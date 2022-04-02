@@ -7,7 +7,7 @@ class Dot extends p5.Vector{
     super(random(width), random(height));
     this.vel = p5.Vector.random2D();
     this.acc = createVector(0, 0);
-    this.clr = color(255, 255, 0, 150);
+    this.clr = color(0, 75, 0, 255);
     this.sz  = random(8, 12);
     this.distance = 0;
     this.index = index;

@@ -7,7 +7,8 @@ class GameName {
     this.player;
     this.platforms;
     this.background;
-    this.farthest;
+    this.farthestPlatform;
+    this.closestPlatform;
 
     this.init();
 
@@ -15,97 +16,100 @@ class GameName {
 
   //P Means PREVIOUS#####
   loadPlatforms(typ, qty, platformArrP, lngthP, spacingP, xP, yP){
-    let platformArr = [];
-    let lngth;
-    let spacing;
-    let x;
-    let y;
+    let platformArr;
+    let platformProp;
     let distance;
     let distanceX;
     let distanceY;
 
-    for (let i = 0; i < qty; i++){
-      if (typ === "LOAD"){
-        lngth = random(80, 150);
-        spacing = random(30, 60);
+    if (typ === "LOAD"){
+      platformArr = [];
 
-        x = (i * lngth) + spacing;
-        y = random(height * 0.25, height * 0.75);
-        platformArr[i] = new Platform(x, y, lngth);
+      for (let i = 0; i < qty; i++){
+        platformProp = this.platformProperties(i);
 
-        if (platformArr.length > 1){
-          this.loadPlatforms("CHECK", platformArr.length, platformArr, lngth, spacing, x, y);
+        platformArr[i] = new Platform(platformProp.x, platformProp.y, platformProp.lngth);
+
+        if (platformArr.length  > 1){
+          this.loadPlatforms("CHECK", platformArr.length, platformArr);
 
         }
 
-      } else if (typ === "CHECK"){
-        platformArr = platformArrP;
-        lngth = lngthP;
-        spacing = spacingP;
-        x = xP;
-        y = yP;
-        let changed = 0;//Decides Whether A Regen Check Needs To Be Runned Again#####
+      }
+
+    } else if (typ === "CHECK"){
+      platformArr = platformArrP;
+      let changed = 0;
+      let indexNext;
+      let indexPrev;
+
+      for (let i = 0; i < qty; i++){
+        indexNext = i + 1;
+        indexPrev = i - 1;
 
         for (let j = platformArr.length - 1; j >= 0; j--){
-          if (platformArr[j] !== platformArr[i]){
-            distance = platformArr[j].dist(platformArr[i]);
+          if (platformArr[i] !== platformArr[j]){
+            distance = platformArr[i].dist(platformArr[j]);
             distanceX = abs(platformArr[i].x - platformArr[j].x);
             distanceY = abs(platformArr[i].y - platformArr[j].y);
 
-            if (distance < lngth + spacing){
-              if (distanceY < platformArr[i].width * 4){
-                console.log("i: " + i + " TOO CLOSE TO " + j + " ON Y AXIS");
+            if ((j === indexNext || j === indexPrev) && distance >= width * 0.75){
 
-                if (distanceX < (lngth + platformArr[j].length) / 2){
-                  console.log("i: " + i + " TOO CLOSE TO " + j + " ON X AXIS");
-                  console.log("i: " + i + " OLD X POS: " + x);
-                  console.log("i: " + i + " OLD Y POS: " + y);
-                  console.log("j: " + j + " PLATFORM CHECKED X POS: " + platformArr[j].x);
-                  console.log("j: " + j + " PLATFORM CHECKED Y POS: " + platformArr[j].y);
+              while (distance >= width * 0.75){
+                changed++;
 
-                  changed++;
+                platformProp = this.platformProperties(i);
 
-                  while (distanceY < platformArr[i].width * 4 &&
-                    distanceX < (lngth + platformArr[j].length) / 2) {
-                      lngth = random(80, 150);
-                      spacing = random(30, 60);
-                      x = (i * lngth) + spacing;
-                      y = random(height * 0.25, height * 0.75);
-                      platformArr[i] = new Platform(x, y, lngth);
+                platformArr[i] = new Platform(platformProp.x, platformProp.y, platformProp.lngth);
 
-                      distanceX = abs(platformArr[i].x - platformArr[j].x);
-                      distanceY = abs(platformArr[i].y - platformArr[j].y);
-
-                      console.log("i: " + i + " TOO CLOSE TO " + j + " ON Y AXIS");
-                      console.log("i: " + i + " TOO CLOSE TO " + j + " ON X AXIS");
-                      console.log("i: " + i + " OLD X POS: " + x);
-                      console.log("i: " + i + " OLD Y POS: " + y);
-                      console.log("j: " + j + " PLATFORM CHECKED X POS: " + platformArr[j].x);
-                      console.log("j: " + j + " PLATFORM CHECKED Y POS: " + platformArr[j].y);
-
-                  }
-
-                }
-
-                console.log("");
+                distance = platformArr[i].dist(platformArr[j]);
 
               }
 
             }
 
-          }
+            while (distanceY < platformArr[i].width * 4 &&
+              distanceX < (platformArr[i].length + platformArr[j].length) * 0.55){
+                changed++;
+
+                platformProp = this.platformProperties(i);
+
+                platformArr[i] = new Platform(platformProp.x, platformProp.y, platformProp.lngth);
+
+                distanceX = abs(platformArr[i].x - platformArr[j].x);
+                distanceY = abs(platformArr[i].y - platformArr[j].y);
+
+              }
+
+            }
 
         }
 
-        if (changed > 0) this.loadPlatforms("CHECK", platformArr.length, platformArr, lngth, spacing, x, y);
-
-      } else if (typ === "NEW"){
-
       }
+
+      if (changed !== 0) this.loadPlatforms("CHECK", platformArr.length, platformArr);
 
     }
 
     return platformArr;
+
+  }
+
+  platformProperties(i){
+    let lngth = random(80, 160);
+    let spacing = random(30, 60);
+    let x = (i * lngth) + spacing + (width / 4);
+    let y = random(height * 0.2, height * 0.8);
+
+    let prop = {
+      lngth: lngth,
+      spacing: spacing,
+      x: x,
+      y: y
+
+    };
+
+    return prop;
 
   }
 
@@ -121,14 +125,36 @@ class GameName {
 
   }
 
+  findFarthest(){
+    let tempFarthest = 0;
+    for (let i = 0; i < this.platforms.length; i++){
+      if (this.platforms[i].x  > tempFarthest){
+        tempFarthest = this.platforms[i].x;
+        // console.log(i);
+
+      }
+
+    }
+
+    return tempFarthest;
+
+  }
+
+  findClosest(){
+    let tempClosest = 0;
+    for (let i = 0; i < this.platforms.length; i++){
+      if (this.platforms)
+    }
+  }
+
     init() {
       this.background = this.loadBackgrounds(4);
 
-      this.platforms = this.loadPlatforms("LOAD", 750);
+      this.platforms = this.loadPlatforms("LOAD", 125);
 
-      this.player = new Player(width * 0.25, 0);
+      this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
 
-      this.farthest = this.platforms[this.platforms.length - 1].x;
+      this.farthestPlatform = this.findFarthest();
 
     }
 
@@ -147,14 +173,13 @@ class GameName {
       this.player.render();
 
       for (let i = 0; i < this.platforms.length; i++) {
-        this.platforms[i].render(i);
+        if (this.platforms[i].x < width &&
+        this.platforms[i].x + this.platforms[i].length > 0){
+          this.platforms[i].render(i);
+
+        }
 
       }
-
-      // if (this.platforms[250] <= width){
-      //   this.loadPlatforms("NEW", 250)
-      //
-      // }
 
     }
 
@@ -167,9 +192,11 @@ class GameName {
       this.player.update();
 
       for (let i = 0; i < this.platforms.length; i++) {
-        this.platforms[i].update();
+        this.platforms[i].update(i);
 
       }
+
+      this.closestPlatform = this.findClosest();
 
     }
 

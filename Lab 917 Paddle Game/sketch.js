@@ -60,7 +60,7 @@ function preload() {
 }
 
 function setup() {
-  var cnv = createCanvas(1850, 900);
+  var cnv = createCanvas(windowWidth - 20, windowHeight - 75);
   cnv.position((windowWidth - width) / 2, 30);
   //Create Paddle/Score/Call Functions
   paddle = new Paddle(width / 2, height - 150); //Make Paddle#####
