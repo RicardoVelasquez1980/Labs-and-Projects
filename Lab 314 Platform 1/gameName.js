@@ -143,7 +143,7 @@ class GameName {
   findClosest(){
     let tempClosest = 0;
     for (let i = 0; i < this.platforms.length; i++){
-      if (this.platforms)
+      // if (this.platforms)
     }
   }
 

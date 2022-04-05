@@ -1,23 +1,23 @@
 
 //Start Class Background##########
-class Background{
-  constructor(i){
+class BackgroundImg{
+  constructor(i, h){
     //Ensure that the IMAGES NAMES are the same
     //Except for a number differentiating them
     //Ex: Image1.png   Image2.png   Image3.png
     //This is where the "i" in the for loop
     //Used to create each Image comes to play
-    this.img = loadImage("Layer " + (i + 1) + ".png");
+    this.img = loadImage("img" + (i) + ".png");
     //Three images because the image is being
     //Rendered 3 times
     //This creates the illusion of a seamless and infinite background
-    this.loc1 = createVector(0, 0);
-    this.loc2 = createVector(this.img.width, 0);
-    this.loc3 = createVector(-this.img.width, 0);
+    this.loc1 = createVector(0, h);
+    this.loc2 = createVector(this.img.width, h);
+    this.loc3 = createVector(-this.img.width, h);
     //This will be the speed
     //You can alter this however you like
     //In this case i decided to use the index of the Image
-    this.vel = createVector((i + 1), 0);
+    this.vel = createVector((5 / (i + 1)), 0);
 
   }
 
