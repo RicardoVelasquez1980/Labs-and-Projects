@@ -53,9 +53,9 @@ class GameName {
             distanceX = abs(platformArr[i].x - platformArr[j].x);
             distanceY = abs(platformArr[i].y - platformArr[j].y);
 
-            if ((j === indexNext || j === indexPrev) && distance >= width * 0.75){
+            if ((j === indexNext || j === indexPrev) && distance >= width * 0.70){
 
-              while (distance >= width * 0.75){
+              while (distance >= width * 0.70){
                 changed++;
 
                 platformProp = this.platformProperties(i);
