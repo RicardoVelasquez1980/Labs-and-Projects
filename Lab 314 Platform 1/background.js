@@ -9,7 +9,7 @@ class Background extends p5.Vector{
     this.loc2 = createVector(this.img.width, 0);
     this.loc3 = createVector(-this.img.width, 0);
     this.vel = createVector(0, 0);
-    this.speed = pow(2, i);
+    this.speed = 10 / (i + 2);
 
   }
 
