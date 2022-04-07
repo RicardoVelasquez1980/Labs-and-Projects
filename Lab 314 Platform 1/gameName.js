@@ -150,7 +150,7 @@ class GameName {
     init() {
       this.background = this.loadBackgrounds(4);
 
-      this.platforms = this.loadPlatforms("LOAD", 125);
+      this.platforms = this.loadPlatforms("LOAD", 100);
 
       this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
 

@@ -8,6 +8,7 @@ class Platform extends p5.Vector{
     this.vel = createVector(0, 0);
     this.length = lngth;//Horizontal#####
     this.width = 20;//Vertical#####
+    this.platformImg = this.decideImg(lngth);
     this.topBound = this.y;
     this.bottomBound = this.y + this.width / 2; //Half The Width Of The Platform#####
     this.leftBound = this.x;
@@ -15,18 +16,31 @@ class Platform extends p5.Vector{
 
   }
 
+  decideImg(l){
+    let img;
+
+    if (l <= 100){
+      img = loadImage("Platforms 1.png");
+
+    } else if (l > 100 && l <= 130){
+      img = loadImage("Platforms 2.png");
+
+    } else if (l > 130){
+      img = loadImage("Platforms 3.png");
+
+    }
+
+    return img;
+
+  }
+
   render(i){
+    image(this.platformImg, this.x, this.y);
+
     push();
     fill(255);
     noStroke();
     rect(this.x, this.y, this.length, this.width);
-    pop();
-
-    push();
-    noStroke();
-    fill(0);
-    textSize(10);
-    text(i, this.x + this.length / 2, this.y + this.width / 2);
     pop();
 
   }
