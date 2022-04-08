@@ -35,13 +35,15 @@ class Platform extends p5.Vector{
   }
 
   render(i){
+    this.platformImg.resize(this.length, 0);
     image(this.platformImg, this.x, this.y);
+    // image(this.platformImg, this.x, this.y, this.length, this.width);
 
-    push();
-    fill(255);
-    noStroke();
-    rect(this.x, this.y, this.length, this.width);
-    pop();
+    // push();
+    // fill(255);
+    // noStroke();
+    // rect(this.x, this.y, this.length, this.width);
+    // pop();
 
   }
 
