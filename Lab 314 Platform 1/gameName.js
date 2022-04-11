@@ -176,7 +176,7 @@ class GameName {
       for (let i = 0; i < this.platforms.length; i++) {
         if (this.platforms[i].x < width &&
         this.platforms[i].x + this.platforms[i].length > 0){
-          this.platforms[i].render(i);
+          this.platforms[i].render();
 
         }
 
@@ -193,7 +193,7 @@ class GameName {
       this.player.update();
 
       for (let i = 0; i < this.platforms.length; i++) {
-        this.platforms[i].update(i);
+        this.platforms[i].update();
 
       }
 

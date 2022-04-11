@@ -81,7 +81,7 @@ class Player extends p5.Vector{
           this.x - this.sz / 2 <= gameName.platforms[i].rightBound &&
           this.vel.y > 0){
             this.vel.y = 0;
-            this.y = gameName.platforms[i].y - this.sz / 2;//TP Ontop of Platform#####
+            this.y = gameName.platforms[i].topBound - this.sz / 2;//TP Ontop of Platform#####
 
             this.doubleJump = 2;//Reset Jumps#####
 
