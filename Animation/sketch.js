@@ -19,9 +19,11 @@ function setup() {
 function draw() {
   background(0);
 
-  for (let i = 0; i < frames.length; i++){
-    image(birdFrames[i], width / 2, height / 2);
+  for (let i = 0; i < birdFrames.length; i++){
+    image(birdFrames[i], (i * 100) + 100, height / 2);
 
   }
+
+  // image(birdFrames[0], width / 2, height / 2);
 
 }
