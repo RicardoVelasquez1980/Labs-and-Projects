@@ -15,7 +15,7 @@ class GameName {
   }
 
   //P Means PREVIOUS#####
-  loadPlatforms(typ, qty, platformArrP, lngthP, spacingP, xP, yP){
+  loadPlatforms(typ, qty, platformArrP){
     let platformArr;
     let platformProp;
     let distance;
