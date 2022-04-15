@@ -14,6 +14,7 @@ class Platform extends p5.Vector{
     this.bottomBound;
     this.leftBound;
     this.rightBound;
+    this.createChild = true;
 
   }
 
@@ -39,14 +40,7 @@ class Platform extends p5.Vector{
   }
 
   render(){
-    // push();
-    // fill(255);
-    // noStroke();
-    // rect(this.x, this.y, this.length, this.width);
-    // pop();
-
     push();
-    // imageMode(CENTER);
     this.platformImg.resize(this.length, 0);
     image(this.platformImg, this.x, this.y);
     pop();

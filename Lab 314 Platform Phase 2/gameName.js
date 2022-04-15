@@ -7,8 +7,6 @@ class GameName {
     this.player;
     this.platforms;
     this.background;
-    this.farthestPlatform;
-    this.closestPlatform;
 
     this.init();
 
@@ -28,7 +26,7 @@ class GameName {
       for (let i = 0; i < qty; i++){
         platformProp = this.platformProperties(i);
 
-        platformArr[i] = new Platform(platformProp.x, platformProp.y, platformProp.lngth);
+        platformArr.push(new Platform(platformProp.x, platformProp.y, platformProp.lngth));
 
         if (platformArr.length  > 1){
           this.loadPlatforms("CHECK", platformArr.length, platformArr);
@@ -89,6 +87,9 @@ class GameName {
 
       if (changed !== 0) this.loadPlatforms("CHECK", platformArr.length, platformArr);
 
+    } else if (typ === "ADD"){
+
+
     }
 
     return platformArr;
@@ -125,37 +126,12 @@ class GameName {
 
   }
 
-  findFarthest(){
-    let tempFarthest = 0;
-    for (let i = 0; i < this.platforms.length; i++){
-      if (this.platforms[i].x  > tempFarthest){
-        tempFarthest = this.platforms[i].x;
-        // console.log(i);
-
-      }
-
-    }
-
-    return tempFarthest;
-
-  }
-
-  findClosest(){
-    let tempClosest = 0;
-    for (let i = 0; i < this.platforms.length; i++){
-      // if (this.platforms)
-    }
-  }
-
     init() {
       this.background = this.loadBackgrounds(4);
 
-      // this.platforms = this.loadPlatforms("LOAD", 100);
       this.platforms = this.loadPlatforms("LOAD", 10);
 
       this.player = new Player(this.platforms[0].x + (this.platforms[0].length / 2), 0);
-
-      this.farthestPlatform = this.findFarthest();
 
     }
 
@@ -196,8 +172,6 @@ class GameName {
         this.platforms[i].update();
 
       }
-
-      this.closestPlatform = this.findClosest();
 
     }
 
