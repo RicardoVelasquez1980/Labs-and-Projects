@@ -1,11 +1,11 @@
-//Ricardo Velasquez
+ //Ricardo Velasquez
 //Lab 314 Platform 1
 
 //Start Class BackgroundLayer##########
 class Background extends p5.Vector{
   constructor(i){
     super(0, 0);
-    this.img = loadImage("Layer " + (i + 1) + ".png");
+    this.img = loadImage("kvBackgrounds/b " + i + ".png");
     this.loc2 = createVector(this.img.width, 0);
     this.loc3 = createVector(-this.img.width, 0);
     this.vel = createVector(0, 0);

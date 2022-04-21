@@ -127,7 +127,7 @@ class GameName {
   }
 
     init() {
-      this.background = this.loadBackgrounds(4);
+      this.background = this.loadBackgrounds(6);
 
       this.platforms = this.loadPlatforms("LOAD", 10);
 
