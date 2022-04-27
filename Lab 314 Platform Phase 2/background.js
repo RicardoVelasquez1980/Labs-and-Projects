@@ -5,16 +5,19 @@
 class Background extends p5.Vector{
   constructor(i){
     super(0, 0);
-    this.img = loadImage("kvBackgrounds/b " + i + ".png");
-    this.loc2 = createVector(this.img.width, 0);
-    this.loc3 = createVector(-this.img.width, 0);
+    this.img = loadImage("images/kvBackgrounds/b" + i + ".png");
+    this.loc2 = createVector(this.img.width, height - this.img.height);
+    this.loc3 = createVector(-this.img.width, height - this.img.height);
     this.vel = createVector(0, 0);
     this.speed = 10 / (i + 2);
 
   }
 
   render(){
-    this.img.resize(width, 0);
+    this.y = height - this.img.height;
+    this.loc2.y = height - this.img.height;
+    this.loc3.y = height - this.img.height;
+    // this.img.resize(width, 0);
     image(this.img, this.x, this.y);
     image(this.img, this.loc2.x, this.loc2.y);
     image(this.img, this.loc3.x, this.loc3.y);

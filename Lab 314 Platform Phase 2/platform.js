@@ -22,15 +22,15 @@ class Platform extends p5.Vector{
     let img;
 
     if (l <= 100){
-      img = loadImage("Platforms 1.png");
+      img = loadImage("images/platforms/Platforms 1.png");
       this.platformTyp = "SMALL";
 
     } else if (l > 100 && l <= 130){
-      img = loadImage("Platforms 2.png");
+      img = loadImage("images/platforms/Platforms 2.png");
       this.platformTyp = "MED";
 
     } else if (l > 130){
-      img = loadImage("Platforms 3.png");
+      img = loadImage("images/platforms/Platforms 3.png");
       this.platformTyp = "LARGE";
 
     }

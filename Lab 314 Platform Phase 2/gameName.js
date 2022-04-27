@@ -142,7 +142,7 @@ class GameName {
     }
 
     render() {
-      for (let i = this.background.length - 1; i >= 0; i--){
+      for (let i = 0; i < this.background.length; i++){
         this.background[i].render();
 
       }
