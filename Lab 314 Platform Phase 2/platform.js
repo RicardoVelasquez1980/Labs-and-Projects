@@ -39,18 +39,26 @@ class Platform extends p5.Vector{
 
   }
 
-  render(){
-    push();
+  render(i){
     this.platformImg.resize(this.length, 0);
     image(this.platformImg, this.x, this.y);
+
+    push();
+    noFill();
+    stroke(255);
+    strokeWeight(0.5);
+    textAlign(CENTER, CENTER);
+    textSize(10);
+    text(i, this.x + (this.platformImg.width / 2), this.y + (this.platformImg.height / 2));
     pop();
 
   }
 
-  update(){
+  update(i){
     this.move();
     this.boundsUpdate();
     this.tp();
+    if (i === 5) this.newPatch();
 
   }
 
@@ -103,6 +111,14 @@ class Platform extends p5.Vector{
 
       }
 
+    }
+
+    newPatch(){
+      if (this.x + (this.platformImg.width / 2) < 0){
+        gameName.loadPlatforms("ADD", 10, gameName.platforms);
+
+      }
+      
     }
 
 }

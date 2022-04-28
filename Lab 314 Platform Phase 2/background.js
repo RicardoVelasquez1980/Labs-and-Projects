@@ -11,6 +11,8 @@ class Background extends p5.Vector{
     this.vel = createVector(0, 0);
     this.speed = 10 / (i + 2);
 
+    this.index = i
+
   }
 
   render(){

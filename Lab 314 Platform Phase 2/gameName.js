@@ -66,7 +66,7 @@ class GameName {
 
             }
 
-            while (distanceY < platformArr[i].width * 4 &&
+            while (distanceY < platformArr[i].width * 6 &&
               distanceX < (platformArr[i].length + platformArr[j].length) * 0.55){
                 changed++;
 
@@ -88,7 +88,19 @@ class GameName {
       if (changed !== 0) this.loadPlatforms("CHECK", platformArr.length, platformArr);
 
     } else if (typ === "ADD"){
+      platformArr = platformArrp;
+      
+      for (let i = 0; i < qty; i++){
+        platformProp = this.platformProperties(i);
 
+        platformArr.push(new Platform(platformProp.x, platformProp.y, platformProp.lngth));
+
+        if (platformArr.length  > 1){
+          this.loadPlatforms("CHECK", platformArr.length, platformArr);
+
+        }
+
+      }
 
     }
 
@@ -152,7 +164,7 @@ class GameName {
       for (let i = 0; i < this.platforms.length; i++) {
         if (this.platforms[i].x < width &&
         this.platforms[i].x + this.platforms[i].length > 0){
-          this.platforms[i].render();
+          this.platforms[i].render(i);
 
         }
 
@@ -169,7 +181,7 @@ class GameName {
       this.player.update();
 
       for (let i = 0; i < this.platforms.length; i++) {
-        this.platforms[i].update();
+        this.platforms[i].update(i);
 
       }
 
