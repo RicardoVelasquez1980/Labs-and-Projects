@@ -88,8 +88,8 @@ class GameName {
       if (changed !== 0) this.loadPlatforms("CHECK", platformArr.length, platformArr);
 
     } else if (typ === "ADD"){
-      platformArr = platformArrp;
-      
+      platformArr = platformArrP;
+
       for (let i = 0; i < qty; i++){
         platformProp = this.platformProperties(i);
 
