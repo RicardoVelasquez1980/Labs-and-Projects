@@ -95,10 +95,10 @@ class GameName {
 
         platformArr.push(new Platform(platformProp.x, platformProp.y, platformProp.lngth));
 
-        if (platformArr.length  > 1){
-          this.loadPlatforms("CHECK", platformArr.length, platformArr);
-
-        }
+        // if (platformArr.length  > 1){
+        //   this.loadPlatforms("CHECK", platformArr.length, platformArr);
+        //
+        // }
 
       }
 
@@ -179,9 +179,14 @@ class GameName {
       }
 
       this.player.update();
+// let i = this.platforms.length - 1; i >= 0; i--
 
       for (let i = 0; i < this.platforms.length; i++) {
         this.platforms[i].update(i);
+
+        if (this.platforms[i].x < -width && this.platforms.length > 10){
+          this.platforms.splice(i, 1);
+        }
 
       }
 

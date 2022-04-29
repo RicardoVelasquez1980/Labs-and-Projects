@@ -57,8 +57,7 @@ class Platform extends p5.Vector{
   update(i){
     this.move();
     this.boundsUpdate();
-    this.tp();
-    if (i === 5) this.newPatch();
+    if (i % 5 === 0 && i !== 0 && gameName.platforms.length <= 10) this.newPatch();
 
   }
 
@@ -104,21 +103,12 @@ class Platform extends p5.Vector{
 
     }
 
-    tp(){
-      if (this.x < -(gameName.farthestPlatform / 4)){
-
-        this.x = gameName.farthestPlatform * 0.75 - 0.1;
-
-      }
-
-    }
-
     newPatch(){
       if (this.x + (this.platformImg.width / 2) < 0){
-        gameName.loadPlatforms("ADD", 10, gameName.platforms);
+        gameName.loadPlatforms("ADD", 2, gameName.platforms);
 
       }
-      
+
     }
 
 }
